@@ -16,17 +16,17 @@
   },
   "homepage": "http://CinemaPress.org/",
   "dependencies": {
-    "body-parser": "latest",
-    "cookie-parser": "latest",
-    "express": "latest",
-    "ejs": "latest",
-    "path": "latest",
-    "request": "latest",
-    "mysql": "latest",
-    "async": "latest",
-    "memcached": "latest",
-    "html-entities": "latest",
-    "md5": "latest",
-    "speakingurl": "latest"
+    "body-parser": "1.15.2",
+    "cookie-parser": "1.4.3",
+    "express": "4.14.0",
+    "ejs": "2.4.2",
+    "path": "0.12.7",
+    "request": "2.72.0",
+    "mysql": "2.11.1",
+    "async": "2.0.0-rc.6",
+    "memcached": "2.2.2",
+    "html-entities": "1.2.0",
+    "md5": "2.1.0",
+    "speakingurl": "9.0.0"
   }
 }

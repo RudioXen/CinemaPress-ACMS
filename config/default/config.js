@@ -1,6 +1,6 @@
 module.exports = {
     "protocol": "http://",
-    "domain": "test.cinemapress.org",
+    "domain": "example.com",
     "email": "support@example.com",
     "theme": "default",
     "image": {
