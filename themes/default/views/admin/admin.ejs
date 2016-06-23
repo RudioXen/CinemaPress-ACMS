@@ -124,6 +124,16 @@
                                 <p>Разметка</p>
                                 <span class="corner-label <% if (modules.schema.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
                             </a>
+                            <a href="/<%- config.urls.admin %>/continue" class="btn-square-icontext">
+                                <i class="fa fa-play"></i>
+                                <p>Продолжить</p>
+                                <span class="corner-label <% if (modules.continue.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/viewed" class="btn-square-icontext">
+                                <i class="fa fa-eye"></i>
+                                <p>Просмотр</p>
+                                <span class="corner-label <% if (modules.viewed.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
                         </div>
                     </div>
 

@@ -85,6 +85,12 @@ module.exports = {
     "schema": {
         "status": false
     },
+    "continue": {
+        "status": true
+    },
+    "viewed": {
+        "status": true
+    },
     "collections": {
         "status": true,
         "data": {

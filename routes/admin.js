@@ -134,6 +134,12 @@ router.get('/:type?', function(req, res) {
         case 'soon':
             res.render('admin/modules/soon', render);
             break;
+        case 'continue':
+            res.render('admin/modules/continue', render);
+            break;
+        case 'viewed':
+            res.render('admin/modules/viewed', render);
+            break;
         default:
             getCountMovies(function (err, render) {
                 return (err)

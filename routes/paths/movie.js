@@ -257,7 +257,7 @@ function idMovie(url) {
     var execId    = regexpId.exec(CP_decode.text(url));
     var id        = (execId) ? parseInt(execId[1]) : 0;
 
-    return id - parseInt(config.urls.unique_id);
+    return (id) ? id - parseInt(config.urls.unique_id) : 0;
 
 }
 
