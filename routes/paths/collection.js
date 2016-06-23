@@ -98,7 +98,7 @@ function allCollection(callback) {
 
 function oneCollection(key, page, sorting, callback) {
 
-    page = page || 1;
+    page = (parseInt(page)) ? parseInt(page) : 1;
 
     var ids = (
     modules.collections.data.collections[key] &&

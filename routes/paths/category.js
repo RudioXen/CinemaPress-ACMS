@@ -170,7 +170,7 @@ function allCategory(type, callback) {
 
 function oneCategory(type, key, page, sorting, callback) {
 
-    page = page || 1;
+    page = (parseInt(page)) ? parseInt(page) : 1;
 
     switch (type) {
         case (config.urls.year):
