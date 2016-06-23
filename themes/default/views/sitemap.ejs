@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <% if (typeof sitemaps == 'object') { %>
+        <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <% sitemaps.forEach(function (sitemap) { %>
+                <sitemap>
+                    <loc><%- sitemap %></loc>
+                </sitemap>
+            <% }); %>
+        </sitemapindex>
+    <% } else if (typeof links == 'object') { %>
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <% links.forEach(function (link) { %>
+                <url>
+                    <loc><%- link %></loc>
+                </url>
+            <% }); %>
+        </urlset>
+    <% } %>

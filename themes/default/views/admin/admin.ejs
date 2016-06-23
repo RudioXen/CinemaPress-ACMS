@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Панель администратора
+                        </h2>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/" class="btn">
+                            Админ-панель CinemaPress
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (typeof counts == 'object') { %>
+
+                    <div class="progress-project-header">
+                        <h5>Опубликовано фильмов</h5><span><%- counts.percent %>%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="<%- counts.percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%- counts.percent %>%;">
+                            <span class="sr-only"><%- counts.percent %>%</span>
+                        </div>
+                    </div>
+                    <div class="progress-project-footer">
+                        <p></p><span><strong><%- counts.publish %></strong>/<%- counts.all %></span>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <% } %>
+
+                    <% if (modules) { %>
+
+                    <div class="subheading">
+                        <h3>Модули сайта</h3>
+                        <p>Модули позволяют расширить возможности Вашего сайта.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="/<%- config.urls.admin %>/soon" class="btn-square-icontext">
+                                <i class="fa fa-calendar"></i>
+                                <p>Скоро</p>
+                                <span class="corner-label <% if (modules.soon.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/comments" class="btn-square-icontext">
+                                <i class="fa fa-comments"></i>
+                                <p>Комментарии</p>
+                                <span class="corner-label <% if (modules.comments.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/related" class="btn-square-icontext">
+                                <i class="fa fa-list-alt"></i>
+                                <p>Связанные</p>
+                                <span class="corner-label <% if (modules.related.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/collections" class="btn-square-icontext">
+                                <i class="fa fa-indent"></i>
+                                <p>Коллекции</p>
+                                <span class="corner-label <% if (modules.collections.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/slider" class="btn-square-icontext">
+                                <i class="fa fa-picture-o"></i>
+                                <p>Слайдер</p>
+                                <span class="corner-label <% if (modules.slider.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/abuse" class="btn-square-icontext">
+                                <i class="fa fa-lock"></i>
+                                <p>Скрыть</p>
+                                <span class="corner-label <% if (modules.abuse.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/top" class="btn-square-icontext">
+                                <i class="fa fa-signal"></i>
+                                <p>Топ</p>
+                                <span class="corner-label <% if (modules.top.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/social" class="btn-square-icontext">
+                                <i class="fa fa-vk"></i>
+                                <p>Соц. сети</p>
+                                <span class="corner-label <% if (modules.social.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/schema" class="btn-square-icontext">
+                                <i class="fa fa-key"></i>
+                                <p>Разметка</p>
+                                <span class="corner-label <% if (modules.schema.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <% } %>
+
+                    <div class="subheading">
+                        <h3>Параметры сайта</h3>
+                        <p>Настройка различных параметров сайта.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="/<%- config.urls.admin %>/publish" class="btn-square-icontext">
+                                <i class="fa fa-clock-o"></i>
+                                <p>Публикация</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/index" class="btn-square-icontext">
+                                <i class="fa fa-th"></i>
+                                <p>Главная</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/urls" class="btn-square-icontext">
+                                <i class="fa fa-sitemap"></i>
+                                <p>URL</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/display" class="btn-square-icontext">
+                                <i class="fa fa-list"></i>
+                                <p>Отображение</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/movies" class="btn-square-icontext">
+                                <i class="fa fa-film"></i>
+                                <p>Фильмы</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/titles" class="btn-square-icontext">
+                                <i class="fa fa-pencil"></i>
+                                <p>Названия</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/descriptions" class="btn-square-icontext">
+                                <i class="fa fa-pencil"></i>
+                                <p>Описания</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/keywords" class="btn-square-icontext">
+                                <i class="fa fa-pencil"></i>
+                                <p>Ключи</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/codes" class="btn-square-icontext">
+                                <i class="fa fa-columns"></i>
+                                <p>Коды</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/load" class="btn-square-icontext">
+                                <i class="fa fa-bar-chart-o"></i>
+                                <p>Нагрузка</p>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/cache" class="btn-square-icontext">
+                                <i class="fa fa-rocket"></i>
+                                <p>Кэш</p>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

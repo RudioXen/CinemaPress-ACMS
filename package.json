@@ -1,0 +1,32 @@
+{
+  "name": "cinemapress-acms",
+  "version": "1.0.0",
+  "description": "CinamePress Automated Content Management System.",
+  "license": "MIT",
+  "author": "Surinam <extensionsapp@gmail.com>",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CinemaPress/CinemaPress-ACMS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CinemaPress/CinemaPress-ACMS/issues"
+  },
+  "homepage": "http://CinemaPress.org/",
+  "dependencies": {
+    "body-parser": "latest",
+    "cookie-parser": "latest",
+    "express": "latest",
+    "ejs": "latest",
+    "path": "latest",
+    "request": "latest",
+    "mysql": "latest",
+    "async": "latest",
+    "memcached": "latest",
+    "html-entities": "latest",
+    "md5": "latest",
+    "speakingurl": "latest"
+  }
+}

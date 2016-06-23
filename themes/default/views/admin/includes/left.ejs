@@ -1,0 +1,122 @@
+<aside id="sidebar-main" class="sidebar">
+
+    <div class="sidebar-logo">
+        <a href="/<%- config.urls.admin %>" id="logo-big">
+            <p style="margin: 5px auto;">
+                <img src="/themes/default/public/images/logo.png" style="width:70px;">
+            </p>
+        </a>
+    </div>
+
+    <div class="sidebar-module">
+        <div class="sidebar-profile-collapsable">
+            <a href="#" id="sidebar-profile-trigger"><%- config.domain %><i class="fa fa-caret-left"></i></a>
+            <ul class="sidebar-profile-list">
+                <li><a href="/<%- config.urls.admin %>/main"><i class="fa fa-shield"></i> Протокол</a></li>
+                <li><a href="/<%- config.urls.admin %>/main"><i class="fa fa-bookmark"></i> Домен</a></li>
+                <li><a href="/<%- config.urls.admin %>/main"><i class="fa fa-envelope"></i> Почта</a></li>
+                <li><a href="/<%- config.urls.admin %>/main"><i class="fa fa-picture-o"></i> Тема</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar-line"></div>
+
+    <ul class="ext-tabs-sidebar">
+        <li class="active">
+            <a href="#navigation"><i class="fa fa-bars"></i> Навигация</a>
+        </li>
+        <li>
+            <a href="#modules"><i class="fa fa-wrench"></i> Модули</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="navigation" class="tab-pane active clearfix">
+            <div class="sidebar-module">
+                <nav class="sidebar-nav-v2">
+                    <ul>
+                        <li>
+                            <a href="/<%- config.urls.admin %>"><i class="fa fa-home"></i> Админ-панель</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/publish"><i class="fa fa-clock-o"></i> Автопубликация</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/index"><i class="fa fa-th"></i> Главная сайта</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/urls"><i class="fa fa-sitemap"></i> Параметры URL</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/display"><i class="fa fa-list"></i> Отображение</a>
+                        </li>
+                        <li class="menu-open">
+                            <a href="#[seo]" style="cursor: default; color: #fff;">SEO тексты <i class="fa fa-pencil" style="cursor: default; color: #fff;"></i> </a>
+                            <ul style="display: block;">
+                                <li>
+                                    <a href="/<%- config.urls.admin %>/movies">Описания фильмам</a>
+                                </li>
+                                <li>
+                                    <a href="/<%- config.urls.admin %>/titles">Названия категорий</a>
+                                </li>
+                                <li>
+                                    <a href="/<%- config.urls.admin %>/descriptions">Описания категорий</a>
+                                </li>
+                                <li>
+                                    <a href="/<%- config.urls.admin %>/keywords">Ключи категорий</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/codes"><i class="fa fa-columns"></i> Вставить код</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/load"><i class="fa fa-bar-chart-o"></i> Распределение нагрузки</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/cache"><i class="fa fa-rocket"></i> Кэширование</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="modules" class="tab-pane clearfix">
+            <div class="sidebar-module">
+                <nav class="sidebar-nav-v2">
+                    <ul>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/soon"><i class="fa fa-calendar"></i> Скоро выйдет</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/comments"><i class="fa fa-comments"></i> Комментарии</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/related"><i class="fa fa-list-alt"></i> Связанные фильмы</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/collections"><i class="fa fa-indent"></i> Коллекции фильмов</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/slider"><i class="fa fa-picture-o"></i> Фильмы в слайдере</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/abuse"><i class="fa fa-lock"></i> Запрещенные фильмы</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/top"><i class="fa fa-signal"></i> Топ в категории</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/social"><i class="fa fa-vk"></i> Группы в соц. сетях</a>
+                        </li>
+                        <li>
+                            <a href="/<%- config.urls.admin %>/schema"><i class="fa fa-key"></i> Микроразметка</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-line"></div>
+
+</aside>

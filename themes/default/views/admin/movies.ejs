@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Фильмы
+                        </h2>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/movies" class="btn">
+                            Список всех фильмов с уникальным описанием
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (movie) { %>
+
+                    <% if (movie.kp_id) { %>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div style="font-size: 12px;">
+                                <img src="https://st.kp.yandex.net/images/sm_film/<%- movie.kp_id %>.jpg" style="float: left; margin: 0 10px 10px 0; width: 50px; height: 70px;">
+                                <%- movie.description %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+                    <% } %>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>ID КиноПоиск</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control input_number" name="movie.kp_id" value="<% if (movie.kp_id) { %><%- movie.kp_id %><% } %>" placeholder="Укажите ID фильма">
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="advanced-textarea">
+
+                                <div class="text-muted">
+                                    Title страницы с фильмом:
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <input type="text" class="form-control" name="movie.title" value="<% if (movie.title) { %><%- movie.title %><% } %>" placeholder="Название">
+
+                                <div class="text-muted">
+                                    Описание фильма:
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <textarea class="form-control descriptions" name="movie.description" placeholder="Уникальное описание фильма"><% if (movie.description) { %><%- movie.description %><% } %></textarea>
+
+                                <div class="advanced-textarea-footer">
+                                    <div class="pull-left">
+                                        <div class="text text-muted" style="float: none;"><span id="movie.description">0</span> символа(-ов)</div>
+                                        <a href="#[title]" data-name="movie.description" data-code="[title]" class="btn btn-default codes">
+                                            русское / английское
+                                        </a>
+                                        <a href="#[title_ru]" data-name="movie.description" data-code="[title_ru]" class="btn btn-default codes">
+                                            русское
+                                        </a>
+                                        <a href="#[title_en]" data-name="movie.description" data-code="[title_en]" class="btn btn-default codes">
+                                            английское
+                                        </a>
+                                        <a href="#[year]" data-name="movie.description" data-code="[year]" class="btn btn-default codes">
+                                            год
+                                        </a>
+                                        <a href="#[premiere]" data-name="movie.description" data-code="[premiere]" class="btn btn-default codes">
+                                            премьера
+                                        </a>
+                                        <a href="#[synonyms]" data-name="movie.description" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                            синонимы
+                                        </a>
+                                        <br>
+                                        <a href="#[country]" data-name="movie.description" data-code="[country]" class="btn btn-default codes">
+                                            страна
+                                        </a>
+                                        <a href="#[countries]" data-name="movie.description" data-code="[countries]" class="btn btn-default codes">
+                                            страны
+                                        </a>
+                                        <a href="#[genre]" data-name="movie.description" data-code="[genre]" class="btn btn-default codes">
+                                            жанр
+                                        </a>
+                                        <a href="#[genres]" data-name="movie.description" data-code="[genres]" class="btn btn-default codes">
+                                            жанры
+                                        </a>
+                                        <a href="#[actor]" data-name="movie.description" data-code="[actor]" class="btn btn-default codes">
+                                            актер
+                                        </a>
+                                        <a href="#[actors]" data-name="movie.description" data-code="[actors]" class="btn btn-default codes">
+                                            актеры
+                                        </a>
+                                        <a href="#[director]" data-name="movie.description" data-code="[director]" class="btn btn-default codes">
+                                            режиссер
+                                        </a>
+                                        <a href="#[directors]" data-name="movie.description" data-code="[directors]" class="btn btn-default codes">
+                                            режиссеры
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Ключевые слова</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="movie.keywords" style="font-weight:normal; font-size: 14px;" value="<% if (movie.keywords) { %><%- movie.keywords %><% } %>" placeholder="кадры, трейлер, фильм, кино, премьера">
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <input class="form-control" type="text" id="id" placeholder="ID КиноПоиск фильма или ссылка на фильм">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" id="add"><span class="fa fa-plus"></span> Добавить описание</button>
+                                </span>
+                            </div>
+                            <script>
+                                var add = document.querySelector('#add');
+                                add.addEventListener('click', function () {
+
+                                    var id = document.querySelector('#id');
+                                    var kp_id = parseInt(id.value);
+
+                                    if (id.value.indexOf('<%- config.domain %>')+1) {
+
+                                        var prefix_id = '<%- config.urls.prefix_id %>' || '/';
+                                        var regexpId  = new RegExp(prefix_id + '([0-9]{1,7})', 'ig');
+                                        var execId    = regexpId.exec(id.value);
+                                        id            = (execId) ? parseInt(execId[1]) : 0;
+
+                                        kp_id = parseInt(id) - parseInt(<%- config.urls.unique_id %>);
+                                    }
+                                    else if (id.value.indexOf('kinopoisk.ru')+1) {
+                                        id = /(film\/|movie\/)([0-9]{1,7})/gi.exec(id.value);
+                                        kp_id = (id) ? parseInt(id[2]) : 0;
+                                    }
+
+                                    if (kp_id) {
+                                        location.href = '/<%- config.urls.admin %>/movies?movie=' + kp_id;
+                                    }
+                                    else {
+                                        location.href = '/<%- config.urls.admin %>/movies?movie=add';
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+
+                    <% if (texts.ids.length) { %>
+
+                    <div class="spacer-10"></div>
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="th-square" style="padding: 0 0 10px 15px;">
+                                <i class="fa fa-times"></i>
+                            </th>
+                            <th scope="col">
+                                ID КиноПоиск
+                            </th>
+                            <th scope="col">
+                                Название
+                            </th>
+                            <th scope="col" class="th-square" style="padding: 0 0 10px 15px;">
+                                <i class="fa fa-pencil"></i>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% for (var movie in texts.movies) { %>
+                        <tr>
+                            <td class="td-highlight">
+                                <a href="#[del]" data-kp_id="<%- movie %>" class="btn-less del" style="margin: 4px;"><i class="fa fa-times"></i></a>
+                            </td>
+                            <td>
+                                <%- movie %>
+                            </td>
+                            <td>
+                                <%- texts.movies[movie].title %>&nbsp;<a href="<%- config.protocol + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + movie %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a>
+                            </td>
+                            <td class="td-highlight">
+                                <a href="/<%- config.urls.admin %>/movies?movie=<%- movie %>" class="btn-less" style="margin: 4px;"><i class="fa fa-pencil"></i></a>
+                            </td>
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
+
+                    <% } %>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

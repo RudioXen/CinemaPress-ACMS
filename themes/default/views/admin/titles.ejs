@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Названия
+                        </h2>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/titles" class="btn">
+                            Названия странц сайта
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (config.titles) { %>
+
+                    <div class="faq">
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница фильмов определенного года</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Год <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.year  %>/2000" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.year"><%- config.titles.year %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.year">0</span> символа(-ов)</div>
+                                                    <a href="#[year]" data-name="config.titles.year" data-code="[year]" class="btn btn-default codes">
+                                                        год
+                                                    </a>
+
+                                                    <a href="#[sorting]" data-name="config.titles.year" data-code="[sorting]" class="btn btn-default codes">
+                                                        сортировка
+                                                    </a>
+
+                                                    <a href="#[page]" data-name="config.titles.year" data-code="[page]" class="btn btn-default codes">
+                                                        страница
+                                                    </a>
+
+                                                    <a href="#[synonyms]" data-name="config.titles.year" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                </div>
+                                                <div class="pull-right">
+
+                                                    <div class="text text-muted" style="float: none;">
+                                                        Текст для
+                                                    </div>
+
+                                                    <a href="#[year]" data-name="config.titles.year" data-code="&#13;&#10;(укажите_год) {&#13;&#10;&#13;&#10;    Текст_для_этого_года&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        определенного года
+                                                    </a>
+
+                                                    <a href="#[default]" data-name="config.titles.year" data-code="&#13;&#10;(default) {&#13;&#10;&#13;&#10;    Фильмы [year] года [sorting] [page]&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        остальных
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница списка всех годов</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Годы <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.year %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.years"><%- config.titles.years %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted"><span id="config.titles.years">0</span> символа(-ов)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница фильмов определенного жанра</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Жанр <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.genre %>/драма" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.genre"><%- config.titles.genre %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.genre">0</span> символа(-ов)</div>
+                                                    <a href="#[genre]" data-name="config.titles.genre" data-code="[genre]" class="btn btn-default codes">
+                                                        жанр
+                                                    </a>
+
+                                                    <a href="#[sorting]" data-name="config.titles.genre" data-code="[sorting]" class="btn btn-default codes">
+                                                        сортировка
+                                                    </a>
+
+                                                    <a href="#[page]" data-name="config.titles.genre" data-code="[page]" class="btn btn-default codes">
+                                                        страница
+                                                    </a>
+
+                                                    <a href="#[synonyms]" data-name="config.titles.genre" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                </div>
+                                                <div class="pull-right">
+
+                                                    <div class="text text-muted" style="float: none;">
+                                                        Текст для
+                                                    </div>
+
+                                                    <a href="#[genre]" data-name="config.titles.genre" data-code="&#13;&#10;(укажите_жанр) {&#13;&#10;&#13;&#10;    Текст_для_этого_жанра&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        определенного жанра
+                                                    </a>
+
+                                                    <a href="#[default]" data-name="config.titles.genre" data-code="&#13;&#10;(default) {&#13;&#10;&#13;&#10;    Фильмы в жанре [genre] [sorting] [page]&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        остальных
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница списка всех жанров</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Жанры <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.genre %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.genres"><%- config.titles.genres %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted"><span id="config.titles.genres">0</span> символа(-ов)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница фильмов определенной страны</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Страна <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.country %>/США" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.country"><%- config.titles.country %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.country">0</span> символа(-ов)</div>
+                                                    <a href="#[country]" data-name="config.titles.country" data-code="[country]" class="btn btn-default codes">
+                                                        страна
+                                                    </a>
+
+                                                    <a href="#[sorting]" data-name="config.titles.country" data-code="[sorting]" class="btn btn-default codes">
+                                                        сортировка
+                                                    </a>
+
+                                                    <a href="#[page]" data-name="config.titles.country" data-code="[page]" class="btn btn-default codes">
+                                                        страница
+                                                    </a>
+
+                                                    <a href="#[synonyms]" data-name="config.titles.country" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                </div>
+                                                <div class="pull-right">
+
+                                                    <div class="text text-muted" style="float: none;">
+                                                        Текст для
+                                                    </div>
+
+                                                    <a href="#[country]" data-name="config.titles.country" data-code="&#13;&#10;(укажите_страну) {&#13;&#10;&#13;&#10;    Текст_для_этой_страны&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        определенной страны
+                                                    </a>
+
+                                                    <a href="#[default]" data-name="config.titles.country" data-code="&#13;&#10;(default) {&#13;&#10;&#13;&#10;    Фильмы из страны [country] [sorting] [page]&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        остальных
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница списка всех стран</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Страны <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.country %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.countries"><%- config.titles.countries %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted"><span id="config.titles.countries">0</span> символа(-ов)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница фильмов определенного актера</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Актер <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.actor %>/Киану Ривз" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.actor"><%- config.titles.actor %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.actor">0</span> символа(-ов)</div>
+                                                    <a href="#[actor]" data-name="config.titles.actor" data-code="[actor]" class="btn btn-default codes">
+                                                        актер
+                                                    </a>
+
+                                                    <a href="#[sorting]" data-name="config.titles.actor" data-code="[sorting]" class="btn btn-default codes">
+                                                        сортировка
+                                                    </a>
+
+                                                    <a href="#[page]" data-name="config.titles.actor" data-code="[page]" class="btn btn-default codes">
+                                                        страница
+                                                    </a>
+
+                                                    <a href="#[synonyms]" data-name="config.titles.actor" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                </div>
+                                                <div class="pull-right">
+
+                                                    <div class="text text-muted" style="float: none;">
+                                                        Текст для
+                                                    </div>
+
+                                                    <a href="#[actor]" data-name="config.titles.actor" data-code="&#13;&#10;(укажите_актера) {&#13;&#10;&#13;&#10;    Текст_для_этого_актера&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        определенного актера
+                                                    </a>
+
+                                                    <a href="#[default]" data-name="config.titles.actor" data-code="&#13;&#10;(default) {&#13;&#10;&#13;&#10;    Фильмы с участием [actor] [sorting] [page]&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        остальных
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница списка всех актеров</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Актеры <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.actor %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.actors"><%- config.titles.actors %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted"><span id="config.titles.actors">0</span> символа(-ов)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница фильмов определенного режиссера</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Режиссер <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.director %>/Дэвид Финчер" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.director"><%- config.titles.director %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.director">0</span> символа(-ов)</div>
+                                                    <a href="#[director]" data-name="config.titles.director" data-code="[director]" class="btn btn-default codes">
+                                                        режиссер
+                                                    </a>
+
+                                                    <a href="#[sorting]" data-name="config.titles.director" data-code="[sorting]" class="btn btn-default codes">
+                                                        сортировка
+                                                    </a>
+
+                                                    <a href="#[page]" data-name="config.titles.director" data-code="[page]" class="btn btn-default codes">
+                                                        страница
+                                                    </a>
+
+                                                    <a href="#[synonyms]" data-name="config.titles.director" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                </div>
+                                                <div class="pull-right">
+
+                                                    <div class="text text-muted" style="float: none;">
+                                                        Текст для
+                                                    </div>
+
+                                                    <a href="#[director]" data-name="config.titles.director" data-code="&#13;&#10;(укажите_режиссера) {&#13;&#10;&#13;&#10;    Текст_для_этого_режиссера&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        определенного режиссера
+                                                    </a>
+
+                                                    <a href="#[default]" data-name="config.titles.director" data-code="&#13;&#10;(default) {&#13;&#10;&#13;&#10;    Фильмы которые срежиссировал [director] [sorting] [page]&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        остальных
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница списка всех режиссеров</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Режиссеры <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.director %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.directors"><%- config.titles.directors %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted"><span id="config.titles.directors">0</span> символа(-ов)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница определенного типа (фильмы, сериалы и т.д.)</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Тип <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.type %>/<% config.urls.types.movie %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.type"><%- config.titles.type %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.type">0</span> символа(-ов)</div>
+                                                    <a href="#[type]" data-name="config.titles.type" data-code="[type]" class="btn btn-default codes">
+                                                        тип
+                                                    </a>
+
+                                                    <a href="#[sorting]" data-name="config.titles.type" data-code="[sorting]" class="btn btn-default codes">
+                                                        сортировка
+                                                    </a>
+
+                                                    <a href="#[page]" data-name="config.titles.type" data-code="[page]" class="btn btn-default codes">
+                                                        страница
+                                                    </a>
+
+                                                    <a href="#[synonyms]" data-name="config.titles.type" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                </div>
+                                                <div class="pull-right">
+
+                                                    <div class="text text-muted" style="float: none;">
+                                                        Текст для
+                                                    </div>
+
+                                                    <a href="#[type]" data-name="config.titles.type" data-code="&#13;&#10;(укажите_тип) {&#13;&#10;&#13;&#10;    Текст_для_этого_типа&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        определенного типа
+                                                    </a>
+
+                                                    <a href="#[default]" data-name="config.titles.type" data-code="&#13;&#10;(default) {&#13;&#10;&#13;&#10;    [type] онлайн [sorting] [page]&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        остальных
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Страница результатов поиска</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Поиск <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.search %>/title?q=Матрица" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.search"><%- config.titles.search %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.search">0</span> символа(-ов)</div>
+                                                    <a href="#[search]" data-name="config.titles.search" data-code="[search]" class="btn btn-default codes">
+                                                        запрос
+                                                    </a>
+
+                                                    <a href="#[sorting]" data-name="config.titles.search" data-code="[sorting]" class="btn btn-default codes">
+                                                        сортировка
+                                                    </a>
+
+                                                    <a href="#[page]" data-name="config.titles.search" data-code="[page]" class="btn btn-default codes">
+                                                        страница
+                                                    </a>
+
+                                                    <a href="#[synonyms]" data-name="config.titles.search" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                </div>
+                                                <div class="pull-right">
+
+                                                    <div class="text text-muted" style="float: none;">
+                                                        Текст для
+                                                    </div>
+
+                                                    <a href="#[search]" data-name="config.titles.search" data-code="&#13;&#10;(укажите_запрос) {&#13;&#10;&#13;&#10;    Текст_для_этого_запроса&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        определенного запроса
+                                                    </a>
+
+                                                    <a href="#[default]" data-name="config.titles.search" data-code="&#13;&#10;(default) {&#13;&#10;&#13;&#10;    Поиск фильма [search] [sorting] [page]&#13;&#10;&#13;&#10;}" class="btn btn-default codes">
+                                                        остальных
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>«Основная» страница фильма</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Страница фильма <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>350" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.movie.movie"><%- config.titles.movie.movie %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.movie.movie">0</span> символа(-ов)</div>
+                                                    <a href="#[title]" data-name="config.titles.movie.movie" data-code="[title]" class="btn btn-default codes">
+                                                        русское / английское
+                                                    </a>
+                                                    <a href="#[title_ru]" data-name="config.titles.movie.movie" data-code="[title_ru]" class="btn btn-default codes">
+                                                        русское
+                                                    </a>
+                                                    <a href="#[title_en]" data-name="config.titles.movie.movie" data-code="[title_en]" class="btn btn-default codes">
+                                                        английское
+                                                    </a>
+                                                    <a href="#[year]" data-name="config.titles.movie.movie" data-code="[year]" class="btn btn-default codes">
+                                                        год
+                                                    </a>
+                                                    <a href="#[premiere]" data-name="config.titles.movie.movie" data-code="[premiere]" class="btn btn-default codes">
+                                                        премьера
+                                                    </a>
+                                                    <a href="#[synonyms]" data-name="config.titles.movie.movie" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                    <br>
+                                                    <a href="#[country]" data-name="config.titles.movie.movie" data-code="[country]" class="btn btn-default codes">
+                                                        страна
+                                                    </a>
+                                                    <a href="#[countries]" data-name="config.titles.movie.movie" data-code="[countries]" class="btn btn-default codes">
+                                                        страны
+                                                    </a>
+                                                    <a href="#[genre]" data-name="config.titles.movie.movie" data-code="[genre]" class="btn btn-default codes">
+                                                        жанр
+                                                    </a>
+                                                    <a href="#[genres]" data-name="config.titles.movie.movie" data-code="[genres]" class="btn btn-default codes">
+                                                        жанры
+                                                    </a>
+                                                    <a href="#[actor]" data-name="config.titles.movie.movie" data-code="[actor]" class="btn btn-default codes">
+                                                        актер
+                                                    </a>
+                                                    <a href="#[actors]" data-name="config.titles.movie.movie" data-code="[actors]" class="btn btn-default codes">
+                                                        актеры
+                                                    </a>
+                                                    <a href="#[director]" data-name="config.titles.movie.movie" data-code="[director]" class="btn btn-default codes">
+                                                        режиссер
+                                                    </a>
+                                                    <a href="#[directors]" data-name="config.titles.movie.movie" data-code="[directors]" class="btn btn-default codes">
+                                                        режиссеры
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>«Онлайн» страница фильма</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Страница онлайн <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>350/<%- config.urls.movies.online %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.movie.online"><%- config.titles.movie.online %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.movie.online">0</span> символа(-ов)</div>
+                                                    <a href="#[title]" data-name="config.titles.movie.online" data-code="[title]" class="btn btn-default codes">
+                                                        русское / английское
+                                                    </a>
+                                                    <a href="#[title_ru]" data-name="config.titles.movie.online" data-code="[title_ru]" class="btn btn-default codes">
+                                                        русское
+                                                    </a>
+                                                    <a href="#[title_en]" data-name="config.titles.movie.online" data-code="[title_en]" class="btn btn-default codes">
+                                                        английское
+                                                    </a>
+                                                    <a href="#[year]" data-name="config.titles.movie.online" data-code="[year]" class="btn btn-default codes">
+                                                        год
+                                                    </a>
+                                                    <a href="#[premiere]" data-name="config.titles.movie.online" data-code="[premiere]" class="btn btn-default codes">
+                                                        премьера
+                                                    </a>
+                                                    <a href="#[synonyms]" data-name="config.titles.movie.online" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                    <br>
+                                                    <a href="#[country]" data-name="config.titles.movie.online" data-code="[country]" class="btn btn-default codes">
+                                                        страна
+                                                    </a>
+                                                    <a href="#[countries]" data-name="config.titles.movie.online" data-code="[countries]" class="btn btn-default codes">
+                                                        страны
+                                                    </a>
+                                                    <a href="#[genre]" data-name="config.titles.movie.online" data-code="[genre]" class="btn btn-default codes">
+                                                        жанр
+                                                    </a>
+                                                    <a href="#[genres]" data-name="config.titles.movie.online" data-code="[genres]" class="btn btn-default codes">
+                                                        жанры
+                                                    </a>
+                                                    <a href="#[actor]" data-name="config.titles.movie.online" data-code="[actor]" class="btn btn-default codes">
+                                                        актер
+                                                    </a>
+                                                    <a href="#[actors]" data-name="config.titles.movie.online" data-code="[actors]" class="btn btn-default codes">
+                                                        актеры
+                                                    </a>
+                                                    <a href="#[director]" data-name="config.titles.movie.online" data-code="[director]" class="btn btn-default codes">
+                                                        режиссер
+                                                    </a>
+                                                    <a href="#[directors]" data-name="config.titles.movie.online" data-code="[directors]" class="btn btn-default codes">
+                                                        режиссеры
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>«Скачать» страница фильма</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Страница скачать <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>350/<%- config.urls.movies.download %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.movie.download"><%- config.titles.movie.download %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.movie.download">0</span> символа(-ов)</div>
+                                                    <a href="#[title]" data-name="config.titles.movie.download" data-code="[title]" class="btn btn-default codes">
+                                                        русское / английское
+                                                    </a>
+                                                    <a href="#[title_ru]" data-name="config.titles.movie.download" data-code="[title_ru]" class="btn btn-default codes">
+                                                        русское
+                                                    </a>
+                                                    <a href="#[title_en]" data-name="config.titles.movie.download" data-code="[title_en]" class="btn btn-default codes">
+                                                        английское
+                                                    </a>
+                                                    <a href="#[year]" data-name="config.titles.movie.download" data-code="[year]" class="btn btn-default codes">
+                                                        год
+                                                    </a>
+                                                    <a href="#[premiere]" data-name="config.titles.movie.download" data-code="[premiere]" class="btn btn-default codes">
+                                                        премьера
+                                                    </a>
+                                                    <a href="#[synonyms]" data-name="config.titles.movie.download" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                    <br>
+                                                    <a href="#[country]" data-name="config.titles.movie.download" data-code="[country]" class="btn btn-default codes">
+                                                        страна
+                                                    </a>
+                                                    <a href="#[countries]" data-name="config.titles.movie.download" data-code="[countries]" class="btn btn-default codes">
+                                                        страны
+                                                    </a>
+                                                    <a href="#[genre]" data-name="config.titles.movie.download" data-code="[genre]" class="btn btn-default codes">
+                                                        жанр
+                                                    </a>
+                                                    <a href="#[genres]" data-name="config.titles.movie.download" data-code="[genres]" class="btn btn-default codes">
+                                                        жанры
+                                                    </a>
+                                                    <a href="#[actor]" data-name="config.titles.movie.download" data-code="[actor]" class="btn btn-default codes">
+                                                        актер
+                                                    </a>
+                                                    <a href="#[actors]" data-name="config.titles.movie.download" data-code="[actors]" class="btn btn-default codes">
+                                                        актеры
+                                                    </a>
+                                                    <a href="#[director]" data-name="config.titles.movie.download" data-code="[director]" class="btn btn-default codes">
+                                                        режиссер
+                                                    </a>
+                                                    <a href="#[directors]" data-name="config.titles.movie.download" data-code="[directors]" class="btn btn-default codes">
+                                                        режиссеры
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>«Трейлер» страница фильма</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Страница трейлера <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>350/<%- config.urls.movies.trailer %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.movie.trailer"><%- config.titles.movie.trailer %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.movie.trailer">0</span> символа(-ов)</div>
+                                                    <a href="#[title]" data-name="config.titles.movie.trailer" data-code="[title]" class="btn btn-default codes">
+                                                        русское / английское
+                                                    </a>
+                                                    <a href="#[title_ru]" data-name="config.titles.movie.trailer" data-code="[title_ru]" class="btn btn-default codes">
+                                                        русское
+                                                    </a>
+                                                    <a href="#[title_en]" data-name="config.titles.movie.trailer" data-code="[title_en]" class="btn btn-default codes">
+                                                        английское
+                                                    </a>
+                                                    <a href="#[year]" data-name="config.titles.movie.trailer" data-code="[year]" class="btn btn-default codes">
+                                                        год
+                                                    </a>
+                                                    <a href="#[premiere]" data-name="config.titles.movie.trailer" data-code="[premiere]" class="btn btn-default codes">
+                                                        премьера
+                                                    </a>
+                                                    <a href="#[synonyms]" data-name="config.titles.movie.trailer" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                    <br>
+                                                    <a href="#[country]" data-name="config.titles.movie.trailer" data-code="[country]" class="btn btn-default codes">
+                                                        страна
+                                                    </a>
+                                                    <a href="#[countries]" data-name="config.titles.movie.trailer" data-code="[countries]" class="btn btn-default codes">
+                                                        страны
+                                                    </a>
+                                                    <a href="#[genre]" data-name="config.titles.movie.trailer" data-code="[genre]" class="btn btn-default codes">
+                                                        жанр
+                                                    </a>
+                                                    <a href="#[genres]" data-name="config.titles.movie.trailer" data-code="[genres]" class="btn btn-default codes">
+                                                        жанры
+                                                    </a>
+                                                    <a href="#[actor]" data-name="config.titles.movie.trailer" data-code="[actor]" class="btn btn-default codes">
+                                                        актер
+                                                    </a>
+                                                    <a href="#[actors]" data-name="config.titles.movie.trailer" data-code="[actors]" class="btn btn-default codes">
+                                                        актеры
+                                                    </a>
+                                                    <a href="#[director]" data-name="config.titles.movie.trailer" data-code="[director]" class="btn btn-default codes">
+                                                        режиссер
+                                                    </a>
+                                                    <a href="#[directors]" data-name="config.titles.movie.trailer" data-code="[directors]" class="btn btn-default codes">
+                                                        режиссеры
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>«Кадры» страница фильма</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Страница кадров <a href="<%- config.protocol %><%- config.domain %>/<%- config.urls.movie %>/<%- config.urls.prefix_id %>350/<%- config.urls.movies.picture %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <textarea class="form-control titles" name="config.titles.movie.picture"><%- config.titles.movie.picture %></textarea>
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted" style="float: none;"><span id="config.titles.movie.picture">0</span> символа(-ов)</div>
+                                                    <a href="#[title]" data-name="config.titles.movie.picture" data-code="[title]" class="btn btn-default codes">
+                                                        русское / английское
+                                                    </a>
+                                                    <a href="#[title_ru]" data-name="config.titles.movie.picture" data-code="[title_ru]" class="btn btn-default codes">
+                                                        русское
+                                                    </a>
+                                                    <a href="#[title_en]" data-name="config.titles.movie.picture" data-code="[title_en]" class="btn btn-default codes">
+                                                        английское
+                                                    </a>
+                                                    <a href="#[year]" data-name="config.titles.movie.picture" data-code="[year]" class="btn btn-default codes">
+                                                        год
+                                                    </a>
+                                                    <a href="#[premiere]" data-name="config.titles.movie.picture" data-code="[premiere]" class="btn btn-default codes">
+                                                        премьера
+                                                    </a>
+                                                    <a href="#[synonyms]" data-name="config.titles.movie.picture" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                    <br>
+                                                    <a href="#[country]" data-name="config.titles.movie.picture" data-code="[country]" class="btn btn-default codes">
+                                                        страна
+                                                    </a>
+                                                    <a href="#[countries]" data-name="config.titles.movie.picture" data-code="[countries]" class="btn btn-default codes">
+                                                        страны
+                                                    </a>
+                                                    <a href="#[genre]" data-name="config.titles.movie.picture" data-code="[genre]" class="btn btn-default codes">
+                                                        жанр
+                                                    </a>
+                                                    <a href="#[genres]" data-name="config.titles.movie.picture" data-code="[genres]" class="btn btn-default codes">
+                                                        жанры
+                                                    </a>
+                                                    <a href="#[actor]" data-name="config.titles.movie.picture" data-code="[actor]" class="btn btn-default codes">
+                                                        актер
+                                                    </a>
+                                                    <a href="#[actors]" data-name="config.titles.movie.picture" data-code="[actors]" class="btn btn-default codes">
+                                                        актеры
+                                                    </a>
+                                                    <a href="#[director]" data-name="config.titles.movie.picture" data-code="[director]" class="btn btn-default codes">
+                                                        режиссер
+                                                    </a>
+                                                    <a href="#[directors]" data-name="config.titles.movie.picture" data-code="[directors]" class="btn btn-default codes">
+                                                        режиссеры
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Нумерация страниц и названия сортировок</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="subheading">
+                                            <h3>Нумерация</h3>
+                                            <p>Будет подставлено на месте <code>[page]</code> в названиях страниц.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" name="config.titles.num" value="<%- config.titles.num %>" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="subheading">
+                                            <h3>Сортировка</h3>
+                                            <p>Будет подставлено на месте <code>[sorting]</code> в названиях страниц.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label>По убыванию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.kinopoisk-rating-up" value="<%- config.titles.sorting['kinopoisk-rating-up'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По возрастанию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.kinopoisk-rating-down" value="<%- config.titles.sorting['kinopoisk-rating-down'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По убыванию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.kinopoisk-vote-up" value="<%- config.titles.sorting['kinopoisk-vote-up'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По возрастанию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.kinopoisk-vote-down" value="<%- config.titles.sorting['kinopoisk-vote-down'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По убыванию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.imdb-rating-up" value="<%- config.titles.sorting['imdb-rating-up'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По возрастанию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.imdb-rating-down" value="<%- config.titles.sorting['imdb-rating-down'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По убыванию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.imdb-vote-up" value="<%- config.titles.sorting['imdb-vote-up'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По возрастанию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.imdb-vote-down" value="<%- config.titles.sorting['imdb-vote-down'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По убыванию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.year-up" value="<%- config.titles.sorting['year-up'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По возрастанию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.year-down" value="<%- config.titles.sorting['year-down'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По убыванию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.premiere-up" value="<%- config.titles.sorting['premiere-up'] %>" class="form-control">
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-3">
+                                                <label>По возрастанию</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="config.titles.sorting.premiere-down" value="<%- config.titles.sorting['premiere-down'] %>" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

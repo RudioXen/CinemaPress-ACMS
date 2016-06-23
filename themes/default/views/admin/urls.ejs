@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            URL сайта
+                        </h2>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/urls" class="btn">
+                            Изменение URL ссылок сайта
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (config.urls) { %>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Страница фильма:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/<%- config.urls.movie %>/</span>
+                                <input class="form-control" name="config.urls.movie_url" value="<%- config.urls.movie_url %>" type="text">
+                            </div>
+                            <div class="helper-text-box">
+                                <div class="form-helper-header">Доступные параметры:</div>
+                                <p>
+                                    <code>[prefix_id]</code> - обязательный праметр, отображает ID фильма, например «<%- config.urls.prefix_id %>299»;<br>
+                                    <code>[separator]</code> - разделитель между параметрами, например «-»;<br>
+                                    <code>[title_ru]</code> - русское название в транслите, например «matrica»;<br>
+                                    <code>[title_en]</code> - оригинальное название, например «the-matrix»;<br>
+                                    <code>[genre]</code> - жанр фильма в транслите, например «komediya»;<br>
+                                    <code>[country]</code> - страна фильма в транслите, например «rossiya»;<br>
+                                    <code>[year]</code> - год фильма, например «2016»;<br>
+                                    <code>[actor]</code> - главный актер в транслите, например «tom-kruz»;<br>
+                                    <code>[director]</code> - режиссер в транслите, например «tim-berton».<br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <label>Разделитель: <input type="text" value="<%- config.urls.separator %>" name="config.urls.separator" class="form-control input_url"></label>
+                                    <div class="helper-text-box" style="text-align: justify;">
+                                        Разделитель между параметрами в URL. Будет подставлено в URL на месте <code>[separator]</code>.
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label>Префикс перед ID: <input type="text" value="<%- config.urls.prefix_id %>" name="config.urls.prefix_id" class="form-control input_url"></label>
+                                    <div class="helper-text-box" style="text-align: justify;">
+                                        Будет подставлено перед ID фильма <code><%- config.urls.prefix_id %>298</code>.
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label>Уникальный ID: <input type="text" value="<%- config.urls.unique_id %>" name="config.urls.unique_id" class="form-control input_number"></label>
+                                    <div class="helper-text-box" style="text-align: justify;">
+                                        Принимает значение от <code>-297</code>&nbsp;до&nbsp;<code>297000</code>. Изменяет ID КиноПоиск фильмов в большую или меньшую сторону.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>URL фильма:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.movie" value="<%- config.urls.movie %>" type="text">
+                                <span class="input-group-addon text-muted">/<%- config.urls.prefix_id %>299-matrica-the-matrix</span>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain + '/' + config.urls.movie %>/<%- config.urls.prefix_id %>299-matrica-the-matrix/</span>
+                                        <input class="form-control input_url" name="config.urls.movies.online" value="<%- config.urls.movies.online %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain + '/' + config.urls.movie %>/<%- config.urls.prefix_id %>299-matrica-the-matrix/</span>
+                                        <input class="form-control input_url" name="config.urls.movies.download" value="<%- config.urls.movies.download %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain + '/' + config.urls.movie %>/<%- config.urls.prefix_id %>299-matrica-the-matrix/</span>
+                                        <input class="form-control input_url" name="config.urls.movies.trailer" value="<%- config.urls.movies.trailer %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain + '/' + config.urls.movie %>/<%- config.urls.prefix_id %>299-matrica-the-matrix/</span>
+                                        <input class="form-control input_url" name="config.urls.movies.picture" value="<%- config.urls.movies.picture %>" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL года:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.year" value="<%- config.urls.year %>" type="text">
+                                <span class="input-group-addon text-muted">/2016</span>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL жанра:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.genre" value="<%- config.urls.genre %>" type="text">
+                                <span class="input-group-addon text-muted">/комедия</span>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL страны:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.country" value="<%- config.urls.country %>" type="text">
+                                <span class="input-group-addon text-muted">/США</span>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL актера:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.actor" value="<%- config.urls.actor %>" type="text">
+                                <span class="input-group-addon text-muted">/Том Круз</span>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL режиссера:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.director" value="<%- config.urls.director %>" type="text">
+                                <span class="input-group-addon text-muted">/Тим Бертон</span>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL типа:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.type" value="<%- config.urls.type %>" type="text">
+                                <span class="input-group-addon text-muted">/<%- config.urls.types.movie %></span>
+                            </div>
+
+                            <div class="spacer-10"></div>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label>URL фильмов:</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain %>/<%- config.urls.type %>/</span>
+                                        <input class="form-control" name="config.urls.types.movie" value="<%- config.urls.types.movie %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <div class="col-sm-3">
+                                    <label>URL сериалов:</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain %>/<%- config.urls.type %>/</span>
+                                        <input class="form-control" name="config.urls.types.serial" value="<%- config.urls.types.serial %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <div class="col-sm-3">
+                                    <label>URL мульты:</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain %>/<%- config.urls.type %>/</span>
+                                        <input class="form-control" name="config.urls.types.mult" value="<%- config.urls.types.mult %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <div class="col-sm-3">
+                                    <label>URL передач:</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain %>/<%- config.urls.type %>/</span>
+                                        <input class="form-control" name="config.urls.types.tv" value="<%- config.urls.types.tv %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="spacer-10"></div>
+                                <div class="col-sm-3">
+                                    <label>URL аниме:</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon text-muted"><%- config.domain %>/<%- config.urls.type %>/</span>
+                                        <input class="form-control" name="config.urls.types.anime" value="<%- config.urls.types.anime %>" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL поиска:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.search" value="<%- config.urls.search %>" type="text">
+                                <span class="input-group-addon text-muted">/title?q=Игра престолов</span>
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL карты:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.sitemap" value="<%- config.urls.sitemap %>" type="text">
+                            </div>
+                        </div>
+                        <div class="spacer-10"></div>
+                        <div class="col-sm-3">
+                            <label>URL админ:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                <input class="form-control input_url" name="config.urls.admin" value="<%- config.urls.admin %>" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

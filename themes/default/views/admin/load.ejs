@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Распределение нагрузки
+                        </h2>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/load" class="btn">
+                            Настройка распределения нагрузки на сайт
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Nginx сервер:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input name="config.nginx.addr" value="<%- config.nginx.addr %>" class="form-control" disabled="disabled" type="text">
+                            <div class="helper-text-box">
+                                <div class="form-helper-header">Параметр Nginx</div>
+                                <p>
+                                    Этот параметр носит информационный характер и не может быть изменен из админ-панели.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Sphinx сервер:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input name="config.sphinx.addr" value="<%- config.sphinx.addr %>" class="form-control" type="text">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" id="restart"><span class="fa fa-repeat"></span> Перезагрузить</button>
+                                </span>
+                            </div>
+                            <div class="helper-text-box">
+                                <div class="form-helper-header">Sphinx сервер</div>
+                                <p>
+                                    При высоких нагрузках на поисковый движок Sphinx, его можно вынести на отдельный сервер.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Memcached сервер:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input name="config.cache.addr" value="<%- config.cache.addr %>" class="form-control" type="text">
+                            <div class="helper-text-box">
+                                <div class="form-helper-header">Кэширующий сервер</div>
+                                <p>
+                                    При высоких нагрузках кэширующий сервер можно вынести на отдельную машину, тем самым увеличив производительность сайта.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Сервер картинок:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input name="config.image.addr" value="<%- config.image.addr %>" class="form-control" type="text">
+                            <div class="helper-text-box">
+                                <div class="form-helper-header">Сервер картинок</div>
+                                <p>
+                                    По умолчанию все катринку грузятся с сторонних источников, однако если Вы хотите чтобы постеры были загружены с Вашего сайта, Вы можете закачать их на сервер и указать здесь адрес сайта.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

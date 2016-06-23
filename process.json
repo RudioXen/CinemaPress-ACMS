@@ -1,0 +1,19 @@
+{
+  "apps" : [{
+    "name"   : "example.com",
+    "script" : "/home/example.com/app.js",
+    "cwd"    : "/home/example.com",
+    "watch"  : true,
+    "ignore_watch" : [
+      "config",
+      "node_modules",
+      "themes/*/public",
+      "themes/.*",
+      ".*"
+    ],
+    "watch_options" : {
+      "followSymlinks": false
+    },
+    "vizion" : false
+  }]
+}

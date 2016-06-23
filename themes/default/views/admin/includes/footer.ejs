@@ -1,0 +1,391 @@
+<div class="spacer-40"></div>
+
+<footer id="footer-main" class="footer-sticky">
+    <div class="footer-main-inner">
+        <div class="pull-left">
+            <p>©&nbsp;<a href="https://CinemaPress.org/" target="_blank">CP&nbsp;CMS</a></p>
+        </div>
+        <div class="pull-right">
+            <a href="#[save]" class="btn btn-info" id="save">
+                <span class="fa fa-floppy-o"></span>&nbsp;Сохранить&nbsp;изменения
+            </a>
+            <a href="#" class="btn" id="toggle-footer"> <i class="fa fa-chevron-down"></i> </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+    window.onload = function() {
+
+        var i = 0;
+
+        var status = document.querySelectorAll('.module-status');
+        if (status)
+            for (i = 0; i < status.length; i++)
+                status[i].addEventListener('click', statusData);
+
+        var save = document.querySelector('#save');
+        if (save)
+            save.addEventListener('click', saveData);
+
+        var restart = document.querySelector('#restart');
+        if (restart)
+            restart.addEventListener('click', restartData);
+
+        var flush = document.querySelector('#flush');
+        if (flush)
+            flush.addEventListener('click', flushData);
+
+        var del = document.querySelectorAll('.del');
+        if (del)
+            for (i = 0; i < del.length; i++)
+                del[i].addEventListener('click', delData);
+
+        newsCP();
+
+        inputData();
+
+    };
+
+    function statusData() {
+
+        var self = this;
+        self.removeEventListener('click', statusData);
+        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;Изменяется&nbsp;статус';
+        
+        var data = {
+            "switch": {
+                "module": self.dataset.module,
+                "status": self.dataset.status
+            }
+        };
+
+        sendServer(data, function (err, result) {
+            if (err) {
+                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;' + err;
+            }
+            else {
+                location.reload();
+            }
+        });
+
+    }
+
+    function restartData() {
+
+        var self = this;
+        self.removeEventListener('click', restartData);
+        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;Перезагружается';
+
+        var data = {
+            "restart": true
+        };
+
+        sendServer(data, function () {
+            self.innerHTML ='<span class="fa fa-repeat"></span>&nbsp;Перезагрузить';
+            self.addEventListener('click', restartData);
+        });
+
+    }
+
+    function flushData() {
+
+        var self = this;
+        self.removeEventListener('click', flushData);
+        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;Очищается&nbsp;кэш';
+
+        var data = {
+            "flush": true
+        };
+
+        sendServer(data, function (err, result) {
+            if (err) {
+                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;' + err;
+            }
+            else {
+                self.innerHTML ='<span class="fa fa-trash-o"></span>&nbsp;Очистить&nbsp;кэш';
+                self.addEventListener('click', flushData);
+            }
+        });
+
+    }
+
+    function delData() {
+
+        var self = this;
+        self.removeEventListener('click', delData);
+        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>';
+
+        var data = {
+            "movie": {
+                "kp_id": (self.dataset.kp_id) ? self.dataset.kp_id : null
+            },
+            "collection": {
+                "url": (self.dataset.url) ? self.dataset.url : null
+            },
+            "delete": true
+        };
+
+        sendServer(data, function (err, result) {
+            if (err) {
+                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;' + err;
+            }
+            else {
+                self.innerHTML ='<span class="fa fa-check"></span>';
+            }
+        });
+
+    }
+
+    function saveData() {
+
+        var configs = document.querySelectorAll('input[name],select[name],textarea[name]');
+
+        if (!configs || !configs.length) return false;
+
+        var self = this;
+        self.removeEventListener('click', saveData);
+        self.innerHTML = '<span class="fa fa-spinner fa-spin"></span>&nbsp;Сохраняются&nbsp;изменения';
+
+        var data = {};
+
+        for (var i = 0; i < configs.length; i++) {
+
+            if (configs[i].getAttribute('type')) {
+                if (configs[i].getAttribute('type') == 'checkbox' && !configs[i].checked) {
+                    continue;
+                }
+                else if (configs[i].getAttribute('type') == 'radio' && !configs[i].checked) {
+                    continue;
+                }
+            }
+
+            if (!configs[i].value) {
+                if (configs[i].getAttribute('type') && configs[i].getAttribute('type') == 'checkbox') {}
+                else {
+                    continue;
+                }
+            }
+
+            var objects = configs[i].name.split('.');
+
+            for (var j = 1; j <= objects.length; j++) {
+
+                if (j == 1) {
+                    data[objects[0]] = (j == objects.length)
+                            ? (data[objects[0]])
+                                ? data[objects[0]] + ',' + configs[i].value
+                                : configs[i].value
+                            : data[objects[0]] || {};
+                }
+                else if (j == 2) {
+                    data[objects[0]][objects[1]] = (j == objects.length)
+                            ? (data[objects[0]][objects[1]])
+                                ? data[objects[0]][objects[1]] + ',' + configs[i].value
+                                : configs[i].value
+                            : data[objects[0]][objects[1]] || {};
+                }
+                else if (j == 3) {
+                    data[objects[0]][objects[1]][objects[2]] = (j == objects.length)
+                            ? (data[objects[0]][objects[1]][objects[2]])
+                                ? data[objects[0]][objects[1]][objects[2]] + ',' + configs[i].value
+                                : configs[i].value
+                            : data[objects[0]][objects[1]][objects[2]] || {};
+                }
+                else if (j == 4) {
+                    data[objects[0]][objects[1]][objects[2]][objects[3]] = (j == objects.length)
+                            ? (data[objects[0]][objects[1]][objects[2]][objects[3]])
+                                ? data[objects[0]][objects[1]][objects[2]][objects[3]] + ',' + configs[i].value
+                                : configs[i].value
+                            : data[objects[0]][objects[1]][objects[2]][objects[3]] || {};
+                }
+                else if (j == 5) {
+                    data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] = (j == objects.length)
+                            ? (data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]])
+                                ? data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] + ',' + configs[i].value
+                                : configs[i].value
+                            : data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]] || {};
+                }
+                else if (j == 6) {
+                    data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] = (j == objects.length)
+                            ? (data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]])
+                                ? data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] + ',' + configs[i].value
+                                : configs[i].value
+                            : data[objects[0]][objects[1]][objects[2]][objects[3]][objects[4]][objects[5]] || {};
+                }
+
+            }
+
+        }
+
+        sendServer(data, function (err, result) {
+            if (data.config && data.config.urls && data.config.urls.admin && data.config.urls.admin != '<%- config.urls.admin %>') {
+                location.href = '<%- config.protocol + config.domain + '/' %>' + data.config.urls.admin;
+            }
+            else if (data.config && data.config.theme && data.config.theme != '<%- config.theme %>') {
+                self.innerHTML = '<span class="fa fa-floppy-o"></span>&nbsp;Сохранить&nbsp;изменения';
+                self.addEventListener('click', saveData);
+            }
+            else if (err) {
+                self.innerHTML = '<span class="fa fa-bug"></span>&nbsp;' + err;
+            }
+            else {
+                self.innerHTML = '<span class="fa fa-floppy-o"></span>&nbsp;Сохранить&nbsp;изменения';
+                self.addEventListener('click', saveData);
+            }
+        });
+
+    }
+
+    function sendServer(data, callback) {
+
+        setTimeout(minTimeout, 1000);
+
+        function minTimeout() {
+
+            var status = '';
+            var result = '';
+            var state = '';
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/<%- config.urls.admin %>/change', true);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+            xhr.onreadystatechange = function () {
+                status = xhr.status;
+                result = xhr.responseText;
+                state = xhr.readyState;
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    return callback(null, xhr.responseText);
+                }
+            };
+            xhr.send(JSON.stringify(data));
+
+            setTimeout(function () {
+                if (state == 4 && status != 200) {
+                    console.log('Site error:', status, result);
+                    return callback('Ошибка&nbsp;сайта');
+                }
+                else if (state != 4) {
+                    console.log('Server error:', status, result);
+                    return callback('Ошибка&nbsp;сервера');
+                }
+            }, 5000);
+
+        }
+
+    }
+
+    function newsCP() {
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://cinemapress.org/news.json', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                var result = JSON.parse(xhr.responseText);
+
+                if (result && result.news) {
+                    var infoCP = document.getElementById('infoCP');
+
+                    var ul = document.createElement('ul');
+                    ul.setAttribute('style', 'position: absolute; margin:0; padding:0; top:0;');
+
+                    var news = result.news[Math.floor(Math.random() * result.news.length)];
+
+                    var li = document.createElement('li');
+                    li.setAttribute('style', 'margin:0; padding:0; height: 30px;');
+                    var i = document.createElement('i');
+                    var a = document.createElement('a');
+                    a.setAttribute('href', news.link);
+                    a.textContent = news.title;
+                    i.appendChild(a);
+                    li.appendChild(i);
+                    ul.appendChild(li);
+                    infoCP.appendChild(ul);
+                }
+
+                if (result && result.main) {
+                    var newsCPtitle = document.getElementById('newsCPtitle');
+                    var newsCPdescription = document.getElementById('newsCPdescription');
+                    newsCPtitle.textContent = result.main.title;
+                    newsCPdescription.textContent = result.main.description;
+                }
+
+            }
+        };
+        xhr.send();
+
+    }
+
+    function inputData() {
+
+        var i = 0;
+
+        var counts = document.querySelectorAll('.keywords,.titles,.descriptions');
+        if (counts && counts.length) {
+            for (i = 0; i < counts.length; i++) {
+                document.getElementById(counts[i].name).textContent = ((counts[i].value.replace(/(\s+|<.*?>)/g, '')).length).toString();
+                counts[i].oninput = function () {
+                    document.getElementById(this.name).textContent = ((this.value.replace(/(\s+|<.*?>)/g, '')).length).toString();
+                };
+            }
+        }
+
+        var codes = document.querySelectorAll('.codes');
+        if (codes && codes.length) {
+            for (i = 0; i < codes.length; i++) {
+                codes[i].addEventListener('click', function () {
+                    var data_name = this.getAttribute('data-name');
+                    var data_code = this.getAttribute('data-code');
+                    document.getElementsByName(data_name)[0].value = document.getElementsByName(data_name)[0].value + ' ' + data_code + ' ';
+                    document.getElementsByName(data_name)[0].focus();
+                });
+            }
+        }
+
+        var input_number = document.querySelectorAll('.input_number');
+        if (input_number && input_number.length) {
+            for (i = 0; i < input_number.length; i++) {
+                input_number[i].oninput = function () {
+                    var value = this.value;
+                    var rep = /[^0-9\-]/;
+                    if (rep.test(value)) {
+                        value = value.replace(rep, '');
+                        this.value = value;
+                    }
+                };
+            }
+        }
+
+        var input_url = document.querySelectorAll('.input_url');
+        if (input_url && input_url.length) {
+            for (i = 0; i < input_url.length; i++) {
+                input_url[i].oninput = function () {
+                    var value = this.value;
+                    var rep = /[^0-9A-Za-z_\.\-]/;
+                    if (rep.test(value)) {
+                        value = value.replace(rep, '');
+                        this.value = value;
+                    }
+                };
+            }
+        }
+
+        var input_ids = document.querySelectorAll('.input_ids');
+        if (input_ids && input_ids.length) {
+            for (i = 0; i < input_ids.length; i++) {
+                input_ids[i].oninput = function () {
+                    var value = this.value;
+                    var rep = /[^0-9,]/;
+                    if (rep.test(value)) {
+                        value = value.replace(rep, '');
+                        this.value = value;
+                    }
+                };
+            }
+        }
+
+    }
+
+</script>

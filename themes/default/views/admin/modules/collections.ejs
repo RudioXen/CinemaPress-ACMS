@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Коллекции
+                        </h2>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.collections.status) { %>
+                        <a href="#[false]" data-module="collections" data-status="false" class="btn btn-danger module-status">
+                            <i class="fa fa-power-off"></i>&nbsp;Отключить
+                        </a>
+                        <% } else { %>
+                        <a href="#[true]" data-module="collections" data-status="true" class="btn btn-success module-status">
+                            <i class="fa fa-power-off"></i>&nbsp;Активировать
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/collections" class="btn">
+                            Модуль коллекций с фильмами
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <p>
+                            <% if (modules.collections.status) { %>
+                            <span class="label label-success">Включен</span>
+                            <% } else { %>
+                            <span class="label label-danger">Отключен</span>
+                            <% } %>
+                        </p>
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.collections.status) { %>
+
+                    <% if (collection) { %>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>URL коллекции</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <span class="input-group-addon text-muted"><%- config.domain + '/' + modules.collections.data.url %>/</span>
+                                <input class="form-control input_url" name="collection.url" value="<% if (collection.url) { %><%- collection.url %><% } %>" placeholder="Уникальное имя для URL" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="advanced-textarea">
+
+                                <div class="text-muted">
+                                    Название коллекции:
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <input type="text" class="form-control" name="collection.title" value="<% if (collection.title) { %><%- collection.title %><% } %>" placeholder="Название коллекции">
+
+                                <div class="text-muted">
+                                    Описание коллекции:
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <textarea class="form-control descriptions" name="collection.description" placeholder="Описание коллекции"><% if (collection.description) { %><%- collection.description %><% } %></textarea>
+
+                                <div class="advanced-textarea-footer">
+                                    <div class="pull-left">
+                                        <div class="text text-muted"><span id="collection.description">0</span> символа(-ов)</div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#[synonyms]" data-name="collection.description" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                            синонимы
+                                        </a>
+                                        <a href="#[img]" data-name="collection.description" data-code="&#13;&#10;<img src=&quot;ссылка_изображение&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;" class="btn btn-default codes">
+                                            <i class="fa fa-picture-o"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Ключевые слова</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="collection.keywords" style="font-weight:normal; font-size: 14px;" value="<% if (collection.keywords) { %><%- collection.keywords %><% } %>" placeholder="Ключевые слова коллекции">
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>ID фильмов</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <textarea class="form-control input_ids" name="collection.movies" placeholder="ID КиноПоиск фильмов"><% if (collection.movies) { %><%- collection.movies.join(',') %><% } %></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="sidebar-module">
+                                <div class="thumbs-list thumbs-small">
+                                    <ul>
+                                        <% if (collection.movies) { %>
+                                            <% collection.movies.forEach(function (id) { %>
+                                            <li>
+                                                <img style="width: 60px; height: 90px;" class="media-object" src="https://st.kp.yandex.net/images/sm_film/<%- id %>.jpg" alt="Poster">
+                                            </li>
+                                            <% }); %>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="faq">
+
+                        <article class="faq-group">
+                            <header>
+                                <i class="fa fa-minus"></i>
+                                <h3>Параметры коллекций</h3>
+                            </header>
+                            <div class="faq-content clearfix">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label>URL коллекций</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon text-muted"><%- config.domain %>/</span>
+                                            <input class="form-control input_url" name="modules.collections.data.url" value="<%- modules.collections.data.url %>" type="text">
+                                            <span class="input-group-addon text-muted">/top250</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="advanced-textarea">
+                                            <div class="text-muted">
+                                                Страница со списком коллекций <a href="<%- config.protocol + config.domain + '/' + modules.collections.data.url %>" style="text-decoration:none;"><span class="fa fa-external-link-square"></span></a> :
+                                            </div>
+
+                                            <div class="spacer-10"></div>
+
+                                            <input type="text" class="form-control" name="modules.collections.data.title" value="<%- modules.collections.data.title %>" placeholder="Название страницы со списком коллекций">
+
+                                            <textarea class="form-control descriptions" name="modules.collections.data.description" placeholder="Описание страницы со списком коллекций"><%- modules.collections.data.description %></textarea>
+
+                                            <div class="advanced-textarea-footer">
+                                                <div class="pull-left">
+                                                    <div class="text text-muted"><span id="modules.collections.data.description">0</span> символа(-ов)</div>
+                                                </div>
+                                                <div class="pull-right">
+                                                    <a href="#[synonyms]" data-name="modules.collections.data.description" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
+                                                        синонимы
+                                                    </a>
+                                                    <a href="#[img]" data-name="modules.collections.data.description" data-code="&#13;&#10;<img src=&quot;ссылка_изображение&quot; style=&quot;float:left;width:250px;margin:20px 20px 20px 0;&quot;>&#13;&#10;" class="btn btn-default codes">
+                                                        <i class="fa fa-picture-o"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label>Ключевые слова</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="modules.collections.data.keywords"  style="font-weight:normal; font-size: 12px;" value="<%- modules.collections.data.keywords %>" placeholder="Ключевые слова для страницы со списком коллекций">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-6">
+                            <a href="/<%- config.urls.admin %>/collections?collection=add" class="btn btn-default btn-block"><span class="fa fa-plus"></span> Добавить коллекцию</a>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="th-square" style="padding: 0 0 10px 15px;">
+                                <i class="fa fa-times"></i>
+                            </th>
+                            <th scope="col">
+                                URL
+                            </th>
+                            <th scope="col">
+                                Название
+                            </th>
+                            <th scope="col" class="th-square" style="padding: 0 0 10px 15px;">
+                                <i class="fa fa-pencil"></i>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% for (collection in modules.collections.data.collections) { %>
+                        <tr>
+                            <td class="td-highlight">
+                                <a href="#[del]" data-url="<%- collection %>" class="btn-less del" style="margin: 4px;"><i class="fa fa-times"></i></a>
+                            </td>
+                            <td>
+                                <%- collection %>&nbsp;<a href="<%- config.protocol + config.domain + '/' + modules.collections.data.url + '/' + collection %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a>
+                            </td>
+                            <td>
+                                <%- modules.collections.data.collections[collection].title %>
+                            </td>
+                            <td class="td-highlight">
+                                <a href="/<%- config.urls.admin %>/collections?collection=<%- collection %>" class="btn-less" style="margin: 4px;"><i class="fa fa-pencil"></i></a>
+                            </td>
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
+
+                    <% } %>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4>Модуль «Коллекции» отключен</h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    Модуль «Коллекции» позволяет создавать коллекции с фильмами.
+                                    <br>
+                                    Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

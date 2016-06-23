@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include includes/left.ejs %>
+
+    <% include includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Кэширование
+                        </h2>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/cache" class="btn">
+                            Настройка кэширования
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Кэшировать на</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="config.cache.time" class="form-control">
+                                <% var times = {"0": "Отключить", "3600": "1 час", "43200": "12 часов", "86400": "1 день", "604800": "1 неделя", "2592000": "1 месяц"};
+                                for (time in times) { %>
+                                    <% if (time == config.cache.time) { %>
+                                        <% if (config.cache.time) { %>
+                                            <option value="<%- time %>" selected="selected">
+                                                <%- times[time] %>
+                                            </option>
+                                        <% } else { %>
+                                            <option value="<%- time %>" selected="selected">
+                                                Отключено
+                                            </option>
+                                        <% } %>
+                                    <% } else { %>
+                                        <option value="<%- time %>">
+                                            <%- times[time] %>
+                                        </option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                            <div class="helper-text-box">
+                                <div class="form-helper-header">Время кэширования</div>
+                                <p>
+                                    Указание времени, на которое будет закэширована каждая страница сайта.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-xs-offset-6">
+                            <a href="#[flush]" id="flush" class="btn btn-default btn-block"><span class="fa fa-trash-o"></span> Очистить кэш</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <% include includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

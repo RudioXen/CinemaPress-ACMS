@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Скоро
+                        </h2>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.soon.status) { %>
+                        <a href="#[false]" data-module="soon" data-status="false" class="btn btn-danger module-status">
+                            <i class="fa fa-power-off"></i>&nbsp;Отключить
+                        </a>
+                        <% } else { %>
+                        <a href="#[true]" data-module="soon" data-status="true" class="btn btn-success module-status">
+                            <i class="fa fa-power-off"></i>&nbsp;Активировать
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/soon" class="btn">
+                            Модуль новых премьер
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <p>
+                            <% if (modules.soon.status) { %>
+                            <span class="label label-success">Включен</span>
+                            <% } else { %>
+                            <span class="label label-danger">Отключен</span>
+                            <% } %>
+                        </p>
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.soon.status) { %>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Число фильмов:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="modules.soon.data.count" class="form-control">
+                                <% for (var i = 1; i <= 20; i++) { %>
+                                <% if (modules.soon.data.count == i) { %>
+                                <option value="<%- i %>" selected="selected">
+                                    <%- i %>
+                                </option>
+                                <% } else { %>
+                                <option value="<%- i %>">
+                                    <%- i %>
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <div class="helper-text-box">
+                                <div class="form-helper-header">Фильмы которые скоро появятся на сайте</div>
+                                <p>
+                                    Укажите число фильмов, которые будут отображаться на сайте в блоке «Скоро выйдут».
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4>Модуль «Скоро» отключен</h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    Модуль «Скоро» позволяет добавить на сайт блок с фильмами которые должны выйти в ближайшее время.
+                                    <br>
+                                    Чтобы включить модуль, нажмите на кнопку «Скоро» вверху экрана.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

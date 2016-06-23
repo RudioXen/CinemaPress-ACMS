@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Связанные
+                        </h2>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.related.status) { %>
+                        <a href="#[false]" data-module="related" data-status="false" class="btn btn-danger module-status">
+                            <i class="fa fa-power-off"></i>&nbsp;Отключить
+                        </a>
+                        <% } else { %>
+                        <a href="#[true]" data-module="related" data-status="true" class="btn btn-success module-status">
+                            <i class="fa fa-power-off"></i>&nbsp;Активировать
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/related" class="btn">
+                            Модуль связанных фильмов
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <p>
+                            <% if (modules.related.status) { %>
+                            <span class="label label-success">Включен</span>
+                            <% } else { %>
+                            <span class="label label-danger">Отключен</span>
+                            <% } %>
+                        </p>
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.related.status) { %>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input name="modules.related.data.types.year.name" value="<%- modules.related.data.types.year.name %>" class="form-control" type="text">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.related.data.display" value="year" type="checkbox" <% if (modules.related.data.display.indexOf('year')+1) { %> checked="" <% } %>><span></span> одного года
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <select name="modules.related.data.types.year.count" class="form-control">
+                                <% for (var i = 1; i <= 20; i++) { %>
+                                <% if (modules.related.data.types.year.count == i) { %>
+                                <option value="<%- i %>" selected="selected">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } else { %>
+                                <option value="<%- i %>">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <select name="modules.related.data.types.year.sorting" class="form-control">
+                                <% for (name in config.sorting) { %>
+                                <% if (modules.related.data.types.year.sorting == name) { %>
+                                <option value="<%- name %>" selected="selected">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } else { %>
+                                <option value="<%- name %>">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input name="modules.related.data.types.country.name" value="<%- modules.related.data.types.country.name %>" class="form-control" type="text">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.related.data.display" value="countries" type="checkbox" <% if (modules.related.data.display.indexOf('countries')+1) { %> checked="" <% } %>><span></span> всех
+                                </label>
+                                <label>
+                                    <input name="modules.related.data.display" value="country" type="checkbox" <% if (modules.related.data.display.indexOf('country')+1) { %> checked="" <% } %>><span></span> одной
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <select name="modules.related.data.types.country.count" class="form-control">
+                                <% for (var i = 1; i <= 20; i++) { %>
+                                <% if (modules.related.data.types.country.count == i) { %>
+                                <option value="<%- i %>" selected="selected">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } else { %>
+                                <option value="<%- i %>">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <select name="modules.related.data.types.country.sorting" class="form-control">
+                                <% for (name in config.sorting) { %>
+                                <% if (modules.related.data.types.country.sorting == name) { %>
+                                <option value="<%- name %>" selected="selected">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } else { %>
+                                <option value="<%- name %>">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input name="modules.related.data.types.genre.name" value="<%- modules.related.data.types.genre.name %>" class="form-control" type="text">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.related.data.display" value="genres" type="checkbox" <% if (modules.related.data.display.indexOf('genres')+1) { %> checked="" <% } %>><span></span> всех
+                                </label>
+                                <label>
+                                    <input name="modules.related.data.display" value="genre" type="checkbox" <% if (modules.related.data.display.indexOf('genre')+1) { %> checked="" <% } %>><span></span> одного
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <select name="modules.related.data.types.genre.count" class="form-control">
+                                <% for (var i = 1; i <= 20; i++) { %>
+                                <% if (modules.related.data.types.genre.count == i) { %>
+                                <option value="<%- i %>" selected="selected">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } else { %>
+                                <option value="<%- i %>">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <select name="modules.related.data.types.genre.sorting" class="form-control">
+                                <% for (name in config.sorting) { %>
+                                <% if (modules.related.data.types.genre.sorting == name) { %>
+                                <option value="<%- name %>" selected="selected">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } else { %>
+                                <option value="<%- name %>">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input name="modules.related.data.types.actor.name" value="<%- modules.related.data.types.actor.name %>" class="form-control" type="text">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.related.data.display" value="actors" type="checkbox" <% if (modules.related.data.display.indexOf('actors')+1) { %> checked="" <% } %>><span></span> всех
+                                </label>
+                                <label>
+                                    <input name="modules.related.data.display" value="actor" type="checkbox" <% if (modules.related.data.display.indexOf('actor')+1) { %> checked="" <% } %>><span></span> одного
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <select name="modules.related.data.types.actor.count" class="form-control">
+                                <% for (var i = 1; i <= 20; i++) { %>
+                                <% if (modules.related.data.types.actor.count == i) { %>
+                                <option value="<%- i %>" selected="selected">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } else { %>
+                                <option value="<%- i %>">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <select name="modules.related.data.types.actor.sorting" class="form-control">
+                                <% for (name in config.sorting) { %>
+                                <% if (modules.related.data.types.actor.sorting == name) { %>
+                                <option value="<%- name %>" selected="selected">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } else { %>
+                                <option value="<%- name %>">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input name="modules.related.data.types.director.name" value="<%- modules.related.data.types.director.name %>" class="form-control" type="text">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.related.data.display" value="directors" type="checkbox" <% if (modules.related.data.display.indexOf('directors')+1) { %> checked="" <% } %>><span></span> всех
+                                </label>
+                                <label>
+                                    <input name="modules.related.data.display" value="director" type="checkbox" <% if (modules.related.data.display.indexOf('director')+1) { %> checked="" <% } %>><span></span> одного
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <select name="modules.related.data.types.director.count" class="form-control">
+                                <% for (var i = 1; i <= 20; i++) { %>
+                                <% if (modules.related.data.types.director.count == i) { %>
+                                <option value="<%- i %>" selected="selected">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } else { %>
+                                <option value="<%- i %>">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <select name="modules.related.data.types.director.sorting" class="form-control">
+                                <% for (name in config.sorting) { %>
+                                <% if (modules.related.data.types.director.sorting == name) { %>
+                                <option value="<%- name %>" selected="selected">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } else { %>
+                                <option value="<%- name %>">
+                                    <%- config.sorting[name] %>
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="helper-text-box">
+                                <div class="form-helper-header">Связанные с оригинальным фильмом фильмы</div>
+                                <p>
+                                    На странице фильма, под основной информацией будет отображаться список связанных фильмов. Это могут быть фильмы, которые были сняты в том же году, что и текущий фильм, иметь такой же жанр(-ы), страну(-ы), актера(-ов) или режиссера(-ов). Можно отображать список связанных фильмов как по всем странам, жанрам, актерам, режиссерам, так и по одному случайному.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4>Модуль «Связанные» отключен</h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    Модуль «Связанные» позволяет добавить на странице фильма дополнительные списки фильмов.
+                                    <br>
+                                    Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
