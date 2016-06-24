@@ -51,7 +51,7 @@ module.exports = {
         },
         "year": {
             "name": "Фильмы [year] года",
-            "keys": "2006",
+            "keys": "2000",
             "sorting": "kinopoisk-vote-up",
             "count": 10,
             "order": 2

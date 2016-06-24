@@ -4,8 +4,9 @@
  * Module dependencies.
  */
 
-var CP_page = require('../../lib/CP_page');
-var CP_get  = require('../../lib/CP_get');
+var CP_structure = require('../../lib/CP_structure');
+var CP_page      = require('../../lib/CP_page');
+var CP_get       = require('../../lib/CP_get');
 
 /**
  * Configuration dependencies.
@@ -88,27 +89,20 @@ function allCategory(type, callback) {
 
         async.series({
                 "categories": function (callback) {
-                    return CP_get.categories(
-                        category,
-                        function(err, categories) {
+                    var query = {};
+                    query[category] = '!_empty';
+                    return CP_get.movies(
+                        query,
+                        1000,
+                        'kinopoisk-vote-up',
+                        1,
+                        false,
+                        function(err, movies) {
                             if (err) return callback(err);
 
-                            var result = [];
-                            var size = 48 / categories.max;
+                            var categories = CP_structure.categories(category, movies);
 
-                            for (var key in categories) {
-                                if (categories.hasOwnProperty(key) && key != 'max') {
-                                    var url =
-                                        config.protocol +
-                                        config.domain + '/' +
-                                        config.urls[category] + '/' +
-                                        encodeURIComponent(key);
-                                    var px = 24 + parseInt(categories[key]) * size;
-                                    result[result.length] = '<a href="' + url + '" style="font-size:' + px + 'px;">' + key + '&nbsp;<span style="font-size: 16px;">(' + categories[key] + '&nbsp;шт.)</span></a>';
-                                }
-                            }
-
-                            return callback(null, result);
+                            return callback(null, categories);
                         })
                 },
                 "slider": function (callback) {

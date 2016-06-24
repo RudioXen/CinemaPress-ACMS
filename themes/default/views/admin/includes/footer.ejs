@@ -3,7 +3,7 @@
 <footer id="footer-main" class="footer-sticky">
     <div class="footer-main-inner">
         <div class="pull-left">
-            <p>©&nbsp;<a href="https://CinemaPress.org/" target="_blank">CP</a></p>
+            <p>©&nbsp;<a href="https://CinemaPress.org/" target="_blank">CP&nbsp;CMS</a></p>
         </div>
         <div class="pull-right">
             <a href="#[save]" class="btn btn-info" id="save">
@@ -162,7 +162,30 @@
             }
 
             if (!configs[i].value) {
-                if (configs[i].getAttribute('type') && configs[i].getAttribute('type') == 'checkbox') {}
+                if (
+                        configs[i].getAttribute('type') &&
+                        configs[i].getAttribute('type') == 'checkbox'
+                ) { console.log('Empty checkbox.'); }
+                else if (
+                        configs[i].name == 'config.codes.head' ||
+                        configs[i].name == 'config.codes.bottom' ||
+                        configs[i].name == 'config.index.country.keys' ||
+                        configs[i].name == 'config.index.genre.keys' ||
+                        configs[i].name == 'config.index.year.keys' ||
+                        configs[i].name == 'config.index.type.keys' ||
+                        configs[i].name == 'config.index.actor.keys' ||
+                        configs[i].name == 'config.index.director.keys' ||
+                        configs[i].name == 'config.urls.prefix_id'
+                ) { console.log('Empty config.'); }
+                else if (
+                        configs[i].name == 'modules.comments.data.disqus.shortname' ||
+                        configs[i].name == 'modules.comments.data.facebook.admins' ||
+                        configs[i].name == 'modules.comments.data.vk.app_id' ||
+                        configs[i].name == 'modules.social.data.gplus' ||
+                        configs[i].name == 'modules.social.data.twitter' ||
+                        configs[i].name == 'modules.social.data.facebook' ||
+                        configs[i].name == 'modules.social.data.vk'
+                ) { console.log('Empty modules.'); }
                 else {
                     continue;
                 }

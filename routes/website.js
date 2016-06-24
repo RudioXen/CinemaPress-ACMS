@@ -38,7 +38,11 @@ var sitemap  = require('./paths/sitemap');
 var collection = require('./paths/collection');
 
 /**
- * Website.
+ * Callback.
+ *
+ * @callback Callback
+ * @param {Object} err
+ * @param {Object} [render]
  */
 
 router.get('/:level1?/:level2?/:level3?/:level4?', function (req, res, next) {
@@ -190,6 +194,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function (req, res, next) {
                     });
                 break;
             case 'collection':
+                template = 'category';
                 collection.one(
                     level2,
                     level3,
@@ -199,6 +204,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function (req, res, next) {
                     });
                 break;
             case 'collections':
+                template = 'categories';
                 collection.all(
                     function (err, render) {
                         callback(err, render);
@@ -294,7 +300,8 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function (req, res, next) {
                 return 'sitemap';
                 break;
             case modules.collections.data.url:
-                if (!modules.collections.status) return 'error';
+                if (!modules.collections.status)
+                    return 'error';
                 return (level2)
                     ? 'collection'
                     : 'collections';

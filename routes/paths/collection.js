@@ -4,8 +4,9 @@
  * Module dependencies.
  */
 
-var CP_page = require('../../lib/CP_page');
-var CP_get  = require('../../lib/CP_get');
+var CP_structure = require('../../lib/CP_structure');
+var CP_page      = require('../../lib/CP_page');
+var CP_get       = require('../../lib/CP_get');
 
 /**
  * Configuration dependencies.
@@ -37,10 +38,42 @@ var async = require('async');
 function allCollection(callback) {
 
     async.series({
-            "collections": function (callback) {
-                return (modules.collections.status)
-                    ? callback(null, modules.collections.data.collections)
-                    : callback(null, null)
+            "categories": function (callback) {
+
+                var collections = [];
+
+                async.forEachOfSeries(modules.collections.data.collections, function (value, key, callback) {
+
+                    var ids = (
+                    modules.collections.data.collections[key] &&
+                    modules.collections.data.collections[key].movies &&
+                    modules.collections.data.collections[key].movies.length)
+                        ? modules.collections.data.collections[key].movies.join('|')
+                        : '';
+
+                    var query = {"query_id": ids};
+
+                    CP_get.movies(
+                        query,
+                        10,
+                        'kinopoisk-vote-up',
+                        1,
+                        function (err, movies) {
+                            if (err) return callback(err);
+
+                            collections.push(CP_structure.collections(modules.collections.data.collections[key], movies));
+                            callback();
+
+                        });
+
+                }, function (err) {
+
+                    if (err) return callback(err);
+
+                    callback(null, collections);
+
+                });
+
             },
             "slider": function (callback) {
                 return (modules.slider.status)

@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 
-var CP_get = require('../../lib/CP_get');
+var CP_structure = require('../../lib/CP_structure');
+var CP_get       = require('../../lib/CP_get');
 
 /**
  * Configuration dependencies.
@@ -29,42 +30,51 @@ var modules = require('../../config/modules');
 
 function allSitemap(callback) {
 
-    CP_get.categories('year', function(err, categories) {
+    var query = {};
+    query['year'] = '!_empty';
+    return CP_get.movies(
+        query,
+        1000,
+        'kinopoisk-vote-up',
+        1,
+        false,
+        function(err, movies) {
+            if (err) return callback(err);
 
-        if (err) return callback(err);
+            var render = {};
+            render.sitemaps = [];
 
-        var render = {};
-        render.sitemaps = [];
+            var categories = CP_structure.categories('year', movies);
 
-        for (var year in categories) {
-            if (categories.hasOwnProperty(year)) {
-                if (year == 'max') continue;
-                render.sitemaps[render.sitemaps.length] = config.protocol + config.domain + '/' + config.urls.sitemap + '/' + config.urls.year + '/' + year;
+            for (var year in categories) {
+                if (categories.hasOwnProperty(year)) {
+                    render.sitemaps[render.sitemaps.length] = categories[year].url.replace(config.domain, config.domain + '/' + config.urls.sitemap);
+                }
             }
-        }
 
-        var collection = (modules.collections.status)
-            ? modules.collections.data.url
-            : null;
+            var collection = (modules.collections.status)
+                ? modules.collections.data.url
+                : null;
 
-        var c = [
-            config.urls.year,
-            config.urls.genre,
-            config.urls.country,
-            config.urls.actor,
-            config.urls.director,
-            collection
-        ];
+            var c = [
+                config.urls.year,
+                config.urls.genre,
+                config.urls.country,
+                config.urls.actor,
+                config.urls.director,
+                config.urls.type,
+                collection
+            ];
 
-        for (var cat in c) {
-            if (c.hasOwnProperty(cat) && c[cat]) {
-                render.sitemaps[render.sitemaps.length] = config.protocol + config.domain + '/' +  config.urls.sitemap + '/' + c[cat];
+            for (var cat in c) {
+                if (c.hasOwnProperty(cat) && c[cat]) {
+                    render.sitemaps[render.sitemaps.length] = config.protocol + config.domain + '/' +  config.urls.sitemap + '/' + c[cat];
+                }
             }
-        }
 
-        callback(null, render);
+            return callback(null, render);
 
-    });
+        });
 
 }
 
@@ -134,6 +144,14 @@ function oneSitemap(type, year, callback) {
                         : callback(null, render)
                 });
             break;
+        case (config.urls.type):
+            getTypes(
+                function(err, render) {
+                    return (err)
+                        ? callback(err)
+                        : callback(null, render)
+                });
+            break;
         case (modules.collections.data.url):
             getCollections(
                 function(err, render) {
@@ -153,6 +171,33 @@ function oneSitemap(type, year, callback) {
     }
 
     /**
+     * Get types.
+     *
+     * @param {Callback} callback
+     */
+
+    function getTypes(callback) {
+
+        var render = {};
+        render.links = [];
+
+        var types = [
+            config.urls.types.movie,
+            config.urls.types.serial,
+            config.urls.types.anime,
+            config.urls.types.mult,
+            config.urls.types.tv
+        ];
+
+        for (var i = 0; i < types.length; i++) {
+            render.links[render.links.length] = config.protocol + config.domain + '/' + config.urls.type + '/' + encodeURIComponent(types[i]);
+        }
+
+        callback(null, render);
+
+    }
+
+    /**
      * Get categories.
      *
      * @param {String} category
@@ -161,23 +206,29 @@ function oneSitemap(type, year, callback) {
 
     function getCategories(category, callback) {
 
-        CP_get.categories(
-            category,
-            function (err, categories) {
-
+        var query = {};
+        query[category] = '!_empty';
+        return CP_get.movies(
+            query,
+            1000,
+            'kinopoisk-vote-up',
+            1,
+            false,
+            function(err, movies) {
                 if (err) return callback(err);
 
                 var render = {};
                 render.links = [];
 
-                for (var cat in categories) {
-                    if (categories.hasOwnProperty(cat)) {
-                        if (cat == 'max') continue;
-                        render.links[render.links.length] = config.protocol + config.domain + '/' + config.urls[category] + '/' + encodeURIComponent(cat);
+                var categories = CP_structure.categories(category, movies);
+
+                for (var year in categories) {
+                    if (categories.hasOwnProperty(year)) {
+                        render.links[render.links.length] = categories[year].url;
                     }
                 }
 
-                callback(null, render);
+                return callback(null, render);
 
             });
 
