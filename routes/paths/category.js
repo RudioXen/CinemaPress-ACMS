@@ -114,7 +114,7 @@ function allCategory(type, callback) {
                             if (err) return callback(err);
 
                             return (movies && movies.length)
-                                ? callback(null, movies)
+                                ? callback(null, movies[0])
                                 : callback(null, null)
                         })
                         : callback(null, null)
@@ -128,7 +128,7 @@ function allCategory(type, callback) {
                             if (err) return callback(err);
 
                             return (movies && movies.length)
-                                ? callback(null, movies)
+                                ? callback(null, movies[0])
                                 : callback(null, null)
                         })
                         : callback(null, null)
@@ -157,7 +157,7 @@ function allCategory(type, callback) {
  *
  * @param {String} type
  * @param {String} key
- * @param {Number} page
+ * @param {String} page
  * @param {String} sorting
  * @param {Callback} callback
  */
@@ -253,7 +253,7 @@ function oneCategory(type, key, page, sorting, callback) {
                             if (err) return callback(err);
 
                             return (movies && movies.length)
-                                ? callback(null, movies)
+                                ? callback(null, movies[0])
                                 : callback(null, null)
                         })
                         : callback(null, null)
@@ -267,7 +267,7 @@ function oneCategory(type, key, page, sorting, callback) {
                             if (err) return callback(err);
 
                             return (movies && movies.length)
-                                ? callback(null, movies)
+                                ? callback(null, movies[0])
                                 : callback(null, null)
                         })
                         : callback(null, null)
@@ -281,7 +281,7 @@ function oneCategory(type, key, page, sorting, callback) {
                             if (err) return callback(err);
 
                             return (movies && movies.length)
-                                ? callback(null, movies)
+                                ? callback(null, movies[0])
                                 : callback(null, null)
                         })
                         : callback(null, null)

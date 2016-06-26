@@ -12,12 +12,12 @@ var modules = require('../config/modules');
  *
  * @param {Object} movie
  * @param {Object} movies - The related movies.
- * @return {Array}
+ * @return {String}
  */
 
 function fullMovieSchema(movie, movies) {
 
-    if (!movie) return [];
+    if (!movie) return '';
 
     var result = [];
 
@@ -92,7 +92,7 @@ function fullMovieSchema(movie, movies) {
     result.push(onlyMovieSchema(movie));
     result.push(schemaBreadcrumbList);
 
-    return result;
+    return '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
 
 }
 
@@ -162,7 +162,7 @@ function onlyMovieSchema(movie) {
  *
  * @param {Object} page
  * @param {Object} movies
- * @return {Array}
+ * @return {String}
  */
 
 function categorySchema(page, movies) {
@@ -216,7 +216,7 @@ function categorySchema(page, movies) {
     result.push(schemaItemList);
     result.push(schemaBreadcrumbList);
 
-    return result;
+    return '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
 
 }
 
@@ -224,7 +224,7 @@ function categorySchema(page, movies) {
  * Create schema data for index/categories/collections page.
  *
  * @param {Object} page
- * @return {Object}
+ * @return {String}
  */
 
 function generalSchema(page) {
@@ -246,7 +246,7 @@ function generalSchema(page) {
             result['sameAs'].push(modules.social.data.vk);
         }
         if (modules.social.data.facebook) {
-            result['sameAs'].push(config.social.data.facebook);
+            result['sameAs'].push(modules.social.data.facebook);
         }
         if (modules.social.data.twitter) {
             result['sameAs'].push(modules.social.data.twitter);
@@ -256,13 +256,12 @@ function generalSchema(page) {
         }
     }
 
-    return result;
+    return '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
 
 }
 
 module.exports = {
     "fullMovie" : fullMovieSchema,
-    "onlyMovie" : onlyMovieSchema,
     "category"  : categorySchema,
     "general"   : generalSchema
 };

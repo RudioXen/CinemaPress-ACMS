@@ -46,7 +46,7 @@ function dataIndex(callback) {
                         if (err) return callback(err);
 
                         return (movies && movies.length)
-                            ? callback(null, movies)
+                            ? callback(null, movies[0])
                             : callback(null, null)
                     })
                     : callback(null, null)

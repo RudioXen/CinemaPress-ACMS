@@ -35,7 +35,7 @@ module.exports = {
     "soon": {
         "status": false,
         "data": {
-            "count": 15
+            "count": 6
         }
     },
     "social": {
