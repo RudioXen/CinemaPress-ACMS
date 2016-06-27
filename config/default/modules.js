@@ -26,7 +26,7 @@ module.exports = {
         }
     },
     "top": {
-        "status": false,
+        "status": true,
         "data": {
             "sorting": "imdb-vote-up",
             "count": 15
