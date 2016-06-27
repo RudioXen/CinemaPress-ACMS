@@ -243,6 +243,9 @@ router.get('/:type?', function(req, res) {
 
                 render.counts = result;
                 render.counts.percent = Math.round((100 * result.publish) / result.all);
+                render.counts.days = ((result.all - result.publish) && config.publish.every.movies && config.publish.every.hours)
+                    ? Math.round((result.all - result.publish)/Math.round((24 * config.publish.every.movies) / config.publish.every.hours))
+                    : 0;
 
                 callback(null, render);
 

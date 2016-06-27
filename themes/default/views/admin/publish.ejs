@@ -58,7 +58,10 @@
                         </div>
                     </div>
                     <div class="progress-project-footer">
-                        <p></p><span><strong><%- counts.publish %></strong>/<%- counts.all %></span>
+                        <% if (counts.days) { %>
+                        <p>Автопубликация на <%- counts.days %> дня(-ей)</p>
+                        <% } %>
+                        <span><strong><%- counts.publish %></strong>/<%- counts.all %></span>
                     </div>
 
                     <div class="spacer-10"></div>
