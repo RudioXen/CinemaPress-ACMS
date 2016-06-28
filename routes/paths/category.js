@@ -285,6 +285,19 @@ function oneCategory(type, key, page, sorting, callback) {
                                 : callback(null, null)
                         })
                         : callback(null, null)
+                },
+                "count": function (callback) {
+                    return CP_get.count(
+                        query,
+                        function (err, num) {
+                            if (err) return callback(err);
+
+                            num = Math.ceil(parseInt(num)/config.default.count);
+
+                            return (num)
+                                ? callback(null, num)
+                                : callback(null, 0)
+                        });
                 }
             },
             function(err, result) {
@@ -295,7 +308,7 @@ function oneCategory(type, key, page, sorting, callback) {
                     if (result.hasOwnProperty(r) && result[r] === null)
                         delete result[r];
 
-                result.page = CP_page.category(query, sorting, page, result.movies);
+                result.page = CP_page.category(query, sorting, page, result.count, result.movies);
 
                 callback(null, result);
 
