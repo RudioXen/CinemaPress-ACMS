@@ -67,15 +67,15 @@ function codesComments(movie) {
     var blocks = '';
 
     if (data.disqus) {
-        buttons += '<a href="#[disqus]" class="button dsqs" data-id="dsqs_comment" style="background: #2E9FFF; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none; margin-right: 5px;">Комментарии</a>';
+        buttons += '<a href="#dsqs" class="button dsqs" data-id="dsqs_comment" style="background: #2E9FFF; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none; margin-right: 5px;">Комментарии</a>';
         blocks += '<div class="comment" id="dsqs_comment" style="display: none;">' + data.disqus + '</div>';
     }
     if (data.vk) {
-        buttons += '<a href="#[vk]" class="button veka" data-id="veka_comment" style="background: #507299; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none; margin-right: 5px;">ВКонтакте</a>';
+        buttons += '<a href="#veka" class="button veka" data-id="veka_comment" style="background: #507299; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none; margin-right: 5px;">ВКонтакте</a>';
         blocks += '<div class="comment" id="veka_comment" style="display: none;">' + data.vk + '</div>';
     }
     if (data.facebook) {
-        buttons += '<a href="#[facebook]" class="button fsbk" data-id="fcbk_comment" style="background: #3B5998; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none;">Facebook</a>';
+        buttons += '<a href="#fcbk" class="button fsbk" data-id="fcbk_comment" style="background: #3B5998; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none;">Facebook</a>';
         blocks += '<div class="comment" id="fcbk_comment" style="display: none;">' + data.facebook + '</div>';
     }
 
