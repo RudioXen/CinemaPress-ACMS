@@ -118,12 +118,12 @@ function onlyMovieSchema(movie) {
     result['actor'] = [];
     result['director'] = [];
     result['genre'] = [];
-    result['aggregateRating'] = (movie.kp_rating || movie.imdb_rating)
+    result['aggregateRating'] = (movie.rating)
         ? {
         "@type": "AggregateRating",
         "bestRating": 10,
-        "ratingCount": movie.kp_vote + movie.imdb_vote,
-        "ratingValue": Math.round( ( ((movie.kp_rating || movie.imdb_rating)/10 + (movie.imdb_rating || movie.kp_rating)/10) / 2) * 10 ) / 10
+        "ratingCount": movie.vote,
+        "ratingValue": movie.rating/10
     }
         : null;
 
