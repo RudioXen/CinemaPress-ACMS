@@ -74,10 +74,16 @@
 
 # CinemaPress Themes
 
-Бесплатные шаблоны оформления, которые Вы можете использовать на своих сайтах. Установка нового шаблона, как и установка ACMS сводится к выполнению одной команды.
+Бесплатные шаблоны оформления, которые Вы можете использовать на своих сайтах. Установка нового шаблона, как и установка ACMS сводится к выполнению одной команды:
 
-- [Шаблон «Hodor» для CinemaPress ACMS (kinokong.net)](https://github.com/CinemaPress/Theme-Hodor)
 ```
 ~# wget cinemapress.org/i -qO i && chmod +x i && ./i 3
 ```
+
+- [Шаблон «Hodor» для CinemaPress ACMS (kinokong.net)](https://github.com/CinemaPress/Theme-Hodor)
+
 <a href="https://github.com/CinemaPress/Theme-Hodor"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png" width="400"></a>
+
+- [Шаблон «Sansa» для CinemaPress ACMS (kinovmeste.net)](https://github.com/CinemaPress/Theme-Sansa)
+
+<a href="https://github.com/CinemaPress/Theme-Sansa"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png" width="400"></a>
