@@ -17,8 +17,8 @@ module.exports = {
         "addr": "127.0.0.1:33333"
     },
     "publish": {
-        "start": 330,
-        "stop": 351,
+        "start": 333,
+        "stop": 355,
         "every" : {
             "hours": 1,
             "movies": 2

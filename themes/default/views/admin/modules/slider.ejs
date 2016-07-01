@@ -73,15 +73,27 @@
                     <% if (modules.slider.status) { %>
 
                     <div class="row">
-                        <div class="col-sm-3">
-                            <label>Фильмы</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input name="modules.slider.data.movies" value="<%- modules.slider.data.movies.join(',') %>" class="form-control input_ids" type="text">
+                        <div class="col-sm-12">
+                            <div class="advanced-textarea">
+                                <div class="text-muted">
+                                    ID фильмов для слайдера :
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <textarea class="form-control textarea" name="modules.slider.data.movies"><%- modules.slider.data.movies.join(',') %></textarea>
+                                <div class="advanced-textarea-footer">
+                                    <div class="pull-left">
+                                        <a href="#[slider]" data-name="modules.slider.data.movies" data-code="&#13;&#10;(ID_КиноПоиск) { URL_картинки_для_слайдера }" class="btn btn-default codes">
+                                            слайд со своей картинкой
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="helper-text-box">
                                 <div class="form-helper-header">ID фильмов для слайдера</div>
                                 <p>
-                                    Укажите через запятую ID КиноПоиск фильмов которые будут добавлены в слайдер на сайте.
+                                    Укажите через запятую ID КиноПоиск фильмов которые будут добавлены в слайдер на сайте. Если тема оформления имеет большой слайдер на сайте, то желательно для слайда каждого фильма выбрать картинку, которая наиболее красиво будет смотреться. Это делается вставкой такого кода: <code>(ID_фильма) {Ссылка_на_картинку}</code>, например <code>(341) {http://st.kp.yandex.net/images/kadr/1657023.jpg}</code>.
                                 </p>
                             </div>
                         </div>
@@ -89,11 +101,11 @@
                             <div class="sidebar-module">
                                 <div class="thumbs-list thumbs-small">
                                     <ul>
-                                        <% modules.slider.data.movies.forEach(function (id) { %>
+                                        <% modules.slider.data.movies.join(',').replace(/\s*\(\s*([0-9]{3,7})\s*\)\s*\{[^]*?}\s*/gi, ',$1,').split(',').forEach(function (id) { id = id.replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, ''); if (id) { %>
                                         <li>
                                             <img style="width: 60px; height: 90px;" class="media-object" src="https://st.kp.yandex.net/images/sm_film/<%- id %>.jpg" alt="Poster">
                                         </li>
-                                        <% }); %>
+                                        <% } }); %>
                                     </ul>
                                 </div>
                             </div>

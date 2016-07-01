@@ -16,13 +16,13 @@ module.exports = {
     "slider": {
         "status": true, 
         "data": {
-            "movies": [333,334,335,336,337,338,339,340]
+            "movies": ["(355) { http://st.kp.yandex.net/images/kadr/2497990.jpg }\n335", "336", "337", "338", "339", "340", "341", "342", "343"]
         }
     },
     "abuse": {
         "status": true,
         "data": {
-            "movies": [341,342]
+            "movies": [333,334]
         }
     },
     "top": {
