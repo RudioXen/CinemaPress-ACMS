@@ -324,7 +324,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function (req, res, next) {
 
     function clearString(string) {
 
-        return (string) ? string.replace(/[^\w\sа-яё-]/gi, '') : null;
+        return (string) ? string.replace(/[^\w\sа-яё\._-]/gi, '') : null;
         
     }
 
