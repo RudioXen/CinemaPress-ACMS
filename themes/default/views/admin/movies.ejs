@@ -225,7 +225,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <% for (var movie in texts.movies) { %>
+                        <% for (var movie in texts.movies) { if (texts.movies.hasOwnProperty(movie)) { %>
                         <tr>
                             <td class="td-highlight">
                                 <a href="#[del]" data-kp_id="<%- movie %>" class="btn-less del" style="margin: 4px;"><i class="fa fa-times"></i></a>
@@ -234,13 +234,13 @@
                                 <%- movie %>
                             </td>
                             <td>
-                                <%- texts.movies[movie].title %>&nbsp;<a href="<%- config.protocol + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + movie %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a>
+                                <%- texts.movies[movie].title %>&nbsp;<a href="<%- config.protocol + config.domain + '/' + config.urls.movie + '/' + config.urls.prefix_id + (parseInt(movie) + parseInt(config.urls.unique_id)) %>" style="text-decoration:none;" target="_blank"><span class="fa fa-external-link-square"></span></a>
                             </td>
                             <td class="td-highlight">
                                 <a href="/<%- config.urls.admin %>/movies?movie=<%- movie %>" class="btn-less" style="margin: 4px;"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
-                        <% } %>
+                        <% } } %>
                         </tbody>
                     </table>
 
