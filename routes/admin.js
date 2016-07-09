@@ -161,7 +161,7 @@ router.get('/:type?', function(req, res) {
 
         if (kp_id) {
             kp_id = parseInt(kp_id);
-            CP_get.movies({"query_id": kp_id, "admin": true}, function (err, movies) {
+            CP_get.movies({"query_id": kp_id, "certainly": true}, function (err, movies) {
                 if (err) return callback(err);
 
                 render.movie = {};
@@ -221,7 +221,7 @@ router.get('/:type?', function(req, res) {
 
         async.series({
                 "all": function (callback) {
-                    CP_get.count({"all_movies": "_all_", "admin": true}, function (err, count) {
+                    CP_get.count({"all_movies": "_all_", "certainly": true}, function (err, count) {
                         if (err) return callback(err);
 
                         callback(null, count);

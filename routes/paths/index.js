@@ -67,6 +67,20 @@ function dataIndex(callback) {
             },
             "movies": function(callback) {
                 async.series({
+                        "ids": function (callback) {
+                            return (config.index.ids.keys)
+                                ? CP_get.additional(
+                                {"query_id": config.index.ids.keys},
+                                'index_ids',
+                                function (err, movies) {
+                                    if (err) return callback(err);
+
+                                    return (movies && movies.length)
+                                        ? callback(null, movies)
+                                        : callback(null, [])
+                                })
+                                : callback(null, [])
+                        },
                         "type": function (callback) {
                             return (config.index.type.keys)
                                 ? CP_get.additional(

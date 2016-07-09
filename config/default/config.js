@@ -23,7 +23,7 @@ module.exports = {
             "hours": 1,
             "movies": 2
         },
-        "text": 1,
+        "text": 0,
         "required": [
             "title_ru"
         ]
@@ -42,6 +42,13 @@ module.exports = {
         "robots": "User-agent: *\nAllow: /"
     },
     "index": {
+        "ids": {
+            "name": "Новые фильмы онлайн",
+            "keys": "331,332,333",
+            "sorting": "",
+            "count": 100,
+            "order": 7
+        },
         "type": {
             "name": "Лучшие [type] онлайн",
             "keys": "фильмы",

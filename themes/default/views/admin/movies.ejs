@@ -101,49 +101,49 @@
                                 <div class="advanced-textarea-footer">
                                     <div class="pull-left">
                                         <div class="text text-muted" style="float: none;"><span id="movie.description">0</span> символа(-ов)</div>
-                                        <a href="#[title]" data-name="movie.description" data-code="[title]" class="btn btn-default codes">
-                                            русское / английское
+                                        <% if (movie.title_ru) { %>
+                                        <a href="#[title_ru]" data-name="movie.description" data-code="<%- movie.title_ru %>" class="btn btn-default codes">
+                                            <%- movie.title_ru %>
                                         </a>
-                                        <a href="#[title_ru]" data-name="movie.description" data-code="[title_ru]" class="btn btn-default codes">
-                                            русское
+                                        <% } %>
+                                        <% if (movie.title_en) { %>
+                                        <a href="#[title_en]" data-name="movie.description" data-code="<%- movie.title_en %>" class="btn btn-default codes">
+                                            <%- movie.title_en %>
                                         </a>
-                                        <a href="#[title_en]" data-name="movie.description" data-code="[title_en]" class="btn btn-default codes">
-                                            английское
+                                        <% } %>
+                                        <% if (movie.year) { %>
+                                        <a href="#[year]" data-name="movie.description" data-code="<%- movie.year %>" class="btn btn-default codes">
+                                            <%- movie.year %>
                                         </a>
-                                        <a href="#[year]" data-name="movie.description" data-code="[year]" class="btn btn-default codes">
-                                            год
+                                        <% } %>
+                                        <% if (movie.countries_arr && movie.countries_arr.length) { %>
+                                        <% movie.countries_arr.forEach(function (value) { %>
+                                        <a href="#[countries]" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
+                                            <%- value %>
                                         </a>
-                                        <a href="#[premiere]" data-name="movie.description" data-code="[premiere]" class="btn btn-default codes">
-                                            премьера
+                                        <% }); %>
+                                        <% } %>
+                                        <% if (movie.genres_arr && movie.genres_arr.length) { %>
+                                        <% movie.genres_arr.forEach(function (value) { %>
+                                        <a href="#[genres]" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
+                                            <%- value %>
                                         </a>
-                                        <a href="#[synonyms]" data-name="movie.description" data-code="[фраза_или_слово | похожая_фраза_или_слово | и_еще]" class="btn btn-default codes">
-                                            синонимы
+                                        <% }); %>
+                                        <% } %>
+                                        <% if (movie.actors_arr && movie.actors_arr.length) { %>
+                                        <% movie.actors_arr.forEach(function (value) { %>
+                                        <a href="#[actors]" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
+                                            <%- value %>
                                         </a>
-                                        <br>
-                                        <a href="#[country]" data-name="movie.description" data-code="[country]" class="btn btn-default codes">
-                                            страна
+                                        <% }); %>
+                                        <% } %>
+                                        <% if (movie.directors_arr && movie.directors_arr.length) { %>
+                                        <% movie.directors_arr.forEach(function (value) { %>
+                                        <a href="#[directors]" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
+                                            <%- value %>
                                         </a>
-                                        <a href="#[countries]" data-name="movie.description" data-code="[countries]" class="btn btn-default codes">
-                                            страны
-                                        </a>
-                                        <a href="#[genre]" data-name="movie.description" data-code="[genre]" class="btn btn-default codes">
-                                            жанр
-                                        </a>
-                                        <a href="#[genres]" data-name="movie.description" data-code="[genres]" class="btn btn-default codes">
-                                            жанры
-                                        </a>
-                                        <a href="#[actor]" data-name="movie.description" data-code="[actor]" class="btn btn-default codes">
-                                            актер
-                                        </a>
-                                        <a href="#[actors]" data-name="movie.description" data-code="[actors]" class="btn btn-default codes">
-                                            актеры
-                                        </a>
-                                        <a href="#[director]" data-name="movie.description" data-code="[director]" class="btn btn-default codes">
-                                            режиссер
-                                        </a>
-                                        <a href="#[directors]" data-name="movie.description" data-code="[directors]" class="btn btn-default codes">
-                                            режиссеры
-                                        </a>
+                                        <% }); %>
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>
