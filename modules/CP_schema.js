@@ -112,7 +112,10 @@ function onlyMovieSchema(movie) {
     result['name'] = movie.title_ru;
     result['alternativeHeadline'] = movie.title_en;
     result['description'] = movie.description;
-    result['image'] = movie.poster;
+    result['dateCreated'] =  movie.premiere;
+    result['image'] = (movie.poster.indexOf('http')+1)
+        ? movie.poster
+        : config.protocol + config.domain + movie.poster;
     result['sameAs'] =  movie.url;
     result['url'] =  movie.url;
     result['actor'] = [];
