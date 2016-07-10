@@ -81,7 +81,7 @@
                         <div class="col-sm-9">
                             <div class="input-group">
                                 <span class="input-group-addon text-muted"><%- config.domain + '/' + modules.collections.data.url %>/</span>
-                                <input class="form-control input_url" name="collection.url" value="<% if (collection.url) { %><%- collection.url %><% } %>" placeholder="Уникальное имя для URL" type="text">
+                                <input class="form-control input_url <% if (collection.url && collection.url == 'choice') { %>disabled<% } %>" name="collection.url" value="<% if (collection.url) { %><%- collection.url %><% } %>" placeholder="Уникальное имя для URL" type="text">
                             </div>
                         </div>
                     </div>

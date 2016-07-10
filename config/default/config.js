@@ -45,8 +45,6 @@ module.exports = {
         "ids": {
             "name": "Новые фильмы онлайн",
             "keys": "331,332,333",
-            "sorting": "",
-            "count": 100,
             "order": 7
         },
         "type": {

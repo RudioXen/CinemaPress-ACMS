@@ -312,7 +312,6 @@ router.post('/change', function(req, res) {
                     form.collection.movies = movies;
                     configs.modules.collections.data.collections[form.collection.url] = form.collection;
                 }
-                console.log(form.collection);
             }
 
         }
@@ -335,6 +334,11 @@ router.post('/change', function(req, res) {
                 change.texts = true;
                 configs.texts.ids.push(id);
                 configs.texts.movies[id] = form.movie;
+                
+                if (configs.modules.collections.data.collections.choice) {
+                    change.modules = true;
+                    configs.modules.collections.data.collections.choice.movies.push(id);
+                }
             }
 
         }
