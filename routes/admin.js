@@ -44,15 +44,18 @@ router.get('/:type?', function(req, res) {
         "modules" : JSON.parse(m),
         "texts"   : JSON.parse(t)
     };
-    
+
     var kp_id = (req.query.movie)
         ? req.query.movie
+        : null;
+    var mass = (req.query.movies)
+        ? req.query.movies
         : null;
     var collection_url = (req.query.collection)
         ? req.query.collection
         : null;
 
-    switch (req.params.type) { 
+    switch (req.params.type) {
         case 'index':
             res.render('admin/index', render);
             break;
@@ -89,12 +92,6 @@ router.get('/:type?', function(req, res) {
             break;
         case 'load':
             res.render('admin/load', render);
-            break;
-        case 'backup':
-            res.render('admin/backup', render);
-            break;
-        case 'texts':
-            res.render('admin/texts', render);
             break;
         case 'publish':
             getCountMovies(function (err, render) {
@@ -158,6 +155,7 @@ router.get('/:type?', function(req, res) {
     function getMovie(callback) {
 
         render.movie = null;
+        render.movies = null;
 
         if (kp_id) {
             kp_id = parseInt(kp_id);
@@ -180,6 +178,10 @@ router.get('/:type?', function(req, res) {
 
                 callback(null, render);
             });
+        }
+        else if (mass) {
+            render.movies = true;
+            callback(null, render);
         }
         else {
             callback(null, render);
@@ -320,28 +322,45 @@ router.post('/change', function(req, res) {
 
     if (form.movie) {
 
-        var id = (parseInt(form.movie.kp_id)) ? parseInt(form.movie.kp_id) : 0;
-        
-        if (id) {
+        form.movie.kp_id = (parseInt(form.movie.kp_id)) ? parseInt(form.movie.kp_id) : 0;
 
-            if (form.delete) {
-                change.texts = true;
-                while (configs.texts.ids.indexOf(id) !== -1)
-                    configs.texts.ids.splice(configs.texts.ids.indexOf(id), 1);
-                delete configs.texts.movies[id];
-            }
-            else {
-                change.texts = true;
-                configs.texts.ids.push(id);
-                configs.texts.movies[id] = form.movie;
-                
-                if (configs.modules.collections.data.collections.choice) {
-                    change.modules = true;
-                    configs.modules.collections.data.collections.choice.movies.push(id);
+        if (form.movie.kp_id)
+            addMovie(form.movie);
+
+    }
+
+    if (form.movies) {
+
+        var reg = new RegExp('\\s*\\(\\s*([0-9]{3,7})\\s*\\)\\s*\\{([^]*?)\\}\\s*', 'gi');
+
+        var parts = form.movies.match(reg);
+
+        parts.forEach(function (part) {
+
+            var r = new RegExp('\\s*\\(\\s*([0-9]{3,7})\\s*\\)\\s*\\{([^]*?)\\}\\s*', 'gi');
+
+            var p = r.exec(part);
+
+            if (p && p.length) {
+
+                var movie = {};
+
+                movie.kp_id = parseInt(p[1]);
+
+                var td = p[2].split('|');
+                if (td.length == 2) {
+                    movie.title = td[0].replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '');
+                    movie.description = td[1].replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '');
                 }
+                else {
+                    movie.description = td[0].replace(/\s+/g, ' ').replace(/(^\s*)|(\s*)$/g, '');
+                }
+
+                addMovie(movie);
+
             }
 
-        }
+        });
 
     }
 
@@ -418,14 +437,14 @@ router.post('/change', function(req, res) {
                 return (err)
                     ? res.status(404).send(err)
                     : (change.restart)
-                        ? CP_save.restart(
-                            function (err, result) {
-                                console.log('Type:', 'restart', 'Error:', err, 'Result:', result);
-                                return (err)
-                                    ? res.status(404).send(err)
-                                    : res.send(result)
-                            })
-                        : res.send(result);
+                    ? CP_save.restart(
+                    function (err, result) {
+                        console.log('Type:', 'restart', 'Error:', err, 'Result:', result);
+                        return (err)
+                            ? res.status(404).send(err)
+                            : res.send(result)
+                    })
+                    : res.send(result);
 
             });
 
@@ -473,6 +492,46 @@ router.post('/change', function(req, res) {
         }
 
         return originals;
+
+    }
+
+    /**
+     * Add movie in texts.
+     *
+     * @param {Object} movie
+     */
+
+    function addMovie(movie) {
+
+        var id = movie.kp_id;
+
+        if (form.delete) {
+            change.texts = true;
+            while (configs.texts.ids.indexOf(id) !== -1)
+                configs.texts.ids.splice(configs.texts.ids.indexOf(id), 1);
+            delete configs.texts.movies[id];
+
+            if (configs.modules.collections.data.collections.choice) {
+                change.modules = true;
+                configs.modules.collections.data.collections.choice.movies.push(id);
+                while (configs.modules.collections.data.collections.choice.movies.indexOf(id) !== -1)
+                    configs.modules.collections.data.collections.choice.movies.splice(configs.modules.collections.data.collections.choice.movies.indexOf(id), 1);
+            }
+        }
+        else {
+            change.texts = true;
+            if (configs.texts.ids.indexOf(id) === -1) {
+                configs.texts.ids.push(id);
+            }
+            configs.texts.movies[id] = movie;
+
+            if (configs.modules.collections.data.collections.choice) {
+                change.modules = true;
+                if (configs.modules.collections.data.collections.choice.movies.indexOf(id) === -1) {
+                    configs.modules.collections.data.collections.choice.movies.push(id);
+                }
+            }
+        }
 
     }
 

@@ -594,6 +594,58 @@
 
                     </div>
 
+                    <div class="spacer-20"></div>
+                    <hr>
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+
+                        <div class="col-sm-2">
+                            <select name="config.index.collections.order" class="form-control">
+                                <% for (var i = 1; i <= 8; i++) { %>
+                                <% if (config.index.collections.order == i) { %>
+                                <option value="<%- i %>" selected="selected">
+                                    <%- i %>-й
+                                </option>
+                                <% } else { %>
+                                <option value="<%- i %>">
+                                    <%- i %>-й
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-10">
+                            <input type="text" value="Укажите через запятую URL-ключи коллекций с которых брать крайние фильмы" class="form-control" disabled="disabled">
+                        </div>
+
+                        <div class="spacer-10"></div>
+
+                        <div class="col-sm-3">
+                            <select name="config.index.collections.count" class="form-control">
+                                <% for (var i = 1; i <= 20; i++) { %>
+                                <% if (config.index.collections.count == i) { %>
+                                <option value="<%- i %>" selected="selected">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } else { %>
+                                <option value="<%- i %>">
+                                    <%- i %> фильма(-ов)
+                                </option>
+                                <% } %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>с коллекции(-й)</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" name="config.index.collections.keys" value="<%- config.index.collections.keys %>" class="form-control">
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 

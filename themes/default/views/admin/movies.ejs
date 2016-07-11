@@ -52,7 +52,44 @@
 
                 <div class="inner-padding">
 
-                    <% if (movie) { %>
+                    <% if (movies) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="advanced-textarea">
+
+                                <div class="text-muted">
+                                    Описания фильмам:
+                                </div>
+
+                                <div class="spacer-10"></div>
+
+                                <textarea class="form-control descriptions" name="movies" placeholder="(ID_КиноПоиск) {Название | Описание} или (ID_КиноПоиск) {Описание}"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="subheading">
+                                <p>
+                                    Массовое добавление описаний к фильмам. Чтобы все описания были приняты, они должны иметь определенный формат. В круглых скобках ID КиноПоиска <code>(298)</code> и затем в фигурных скобках можно либо одно описание <code>{Описание}</code>, либо название и через прямую черту описание <code>{Название | Описание}</code>.
+                                    <br><br>
+                                    <code>(330) {Романтическая кинодрама Касабланка | Главный герой картины, Рик Блэйн ...}</code><br>
+                                    <code>(331) {В шикарном поместье умирает газетный магнат Чарльз Фостер Кейн ...}</code><br>
+                                    <code>(332) {Япония. 16 век. В стране полыхает гражданская война, повсюду орудуют ...}</code><br>
+                                    <code>(333) {4-я часть Звездных войн | Татуин. Планета-пустыня. Уже постаревший рыцарь ...}</code><br>
+                                    <code>(334) {Одержимый мыслью о том, что коммунисты намереваются украсть ...}</code><br>
+                                    и т.д. можете добавить до 1 000 описаний за один раз.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-10"></div>
+
+                    <% } else if (movie) { %>
 
                     <% if (movie.kp_id) { %>
                     <div class="row">
@@ -164,7 +201,10 @@
                     <% } else { %>
 
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-4">
+                            <a href="/<%- config.urls.admin %>/movies?movies=add" class="btn btn-default btn-block">Массовое добавление</a>
+                        </div>
+                        <div class="col-sm-8">
                             <div class="input-group">
                                 <input class="form-control" type="text" id="id" placeholder="ID КиноПоиск фильма или ссылка на фильм">
                                 <span class="input-group-btn">

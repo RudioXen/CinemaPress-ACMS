@@ -17,7 +17,7 @@ module.exports = {
         "addr": "127.0.0.1:3000"
     },
     "publish": {
-        "start": 333,
+        "start": 335,
         "stop": 355,
         "every" : {
             "hours": 1,
@@ -42,11 +42,6 @@ module.exports = {
         "robots": "User-agent: *\nAllow: /"
     },
     "index": {
-        "ids": {
-            "name": "Новые фильмы онлайн",
-            "keys": "331,332,333",
-            "order": 7
-        },
         "type": {
             "name": "Лучшие [type] онлайн",
             "keys": "фильмы",
@@ -88,6 +83,16 @@ module.exports = {
             "sorting": "kinopoisk-vote-up",
             "count": 10,
             "order": 6
+        },
+        "ids": {
+            "name": "Новые фильмы онлайн",
+            "keys": "335,336,337,338,339",
+            "order": 7
+        },
+        "collections": {
+            "keys": "choice",
+            "count": 5,
+            "order": 8
         }
     },
     "titles": {
