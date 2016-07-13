@@ -135,7 +135,7 @@ module.exports = {
         }
     },
     "blocking": {
-        "status": true,
+        "status": false,
         "data": {
             "display": "adblock",
             "share": {
@@ -144,7 +144,7 @@ module.exports = {
             },
             "sub": {
                 "keys": ["CP06368342850052267","CP10020891099182505","CP46955642915431706"],
-                "message": "Просмотр доступен только по подписке. Приобретите подписку и активируйте ключ. <p><a href=\"https://digiseller.ru/\" target=\"_blank\">Купить подписку</a></p>"
+                "message": "Просмотр доступен только по подписке. Приобретите подписку и активируйте ключ. <p><a href=\"https://digiseller.ru/\" target=\"_blank\" style=\"color:white;\">Купить подписку</a></p>"
             },
             "adv": {
                 "time": 10,
