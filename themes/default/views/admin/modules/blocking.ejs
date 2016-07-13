@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js">      <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js">           <![endif]-->
+<!--[if gt IE 9]>  <html class="no-js">                       <![endif]-->
+<!--[if !IE]><!--> <html class="no-js">                   <!--<![endif]-->
+<head>
+
+    <% include ../includes/head.ejs %>
+
+</head>
+<body>
+<div id="container" class="clearfix">
+
+    <% include ../includes/left.ejs %>
+
+    <% include ../includes/right.ejs %>
+
+    <div id="main" class="clearfix">
+
+        <% include ../includes/header.ejs %>
+
+        <div id="content" class="clearfix">
+
+            <header id="header-sec">
+                <div class="inner-padding">
+                    <div class="pull-left">
+                        <h2>
+                            Блокировка
+                        </h2>
+                    </div>
+                    <div class="pull-right">
+                        <% if (modules.blocking.status) { %>
+                        <a href="#[false]" data-module="blocking" data-status="false" class="btn btn-danger module-status">
+                            <i class="fa fa-power-off"></i>&nbsp;Отключить
+                        </a>
+                        <% } else { %>
+                        <a href="#[true]" data-module="blocking" data-status="true" class="btn btn-success module-status">
+                            <i class="fa fa-power-off"></i>&nbsp;Активировать
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window">
+                <div class="actionbar">
+                    <div class="pull-left">
+                        <a href="#" class="btn" data-toggle-sidebar="left">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a href="/<%- config.urls.admin %>/blocking" class="btn">
+                            Модуль блокировки плеера и торрентов
+                        </a>
+                    </div>
+                    <div class="pull-right">
+                        <p>
+                            <% if (modules.blocking.status) { %>
+                            <span class="label label-success">Включен</span>
+                            <% } else { %>
+                            <span class="label label-danger">Отключен</span>
+                            <% } %>
+                        </p>
+                        <a href="#" class="btn" data-toggle-sidebar="right">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="inner-padding">
+
+                    <% if (modules.blocking.status) { %>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.blocking.data.display" value="share" <% if (modules.blocking.data.display == 'share') { %> checked="" <% } %> type="radio"><span></span> Поделиться в соц. сеть
+                                </label>
+                            </div>
+                            <div class="helper-text-box">
+                                <p>
+                                    Пока пользователь не нажмёт на кнопку «Поделиться» в одну из соц. сетей, он не сможет начать просмотр определенное время. Если пользователь кликнет по кнопке «Поделиться», то блок закроется через 10 сек.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header>
+                                        <i class="fa fa-minus"></i>
+                                        <h3>Параметры</h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                Таймер блокировки:
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.blocking.data.share.time" class="form-control">
+                                                    <% for (var i = 10; i <= 600; i = i+10) { %>
+                                                    <% if (modules.blocking.data.share.time == i) { %>
+                                                    <option value="<%- i %>" selected="selected">
+                                                        <%- i %> секунд
+                                                    </option>
+                                                    <% } else { %>
+                                                    <option value="<%- i %>">
+                                                        <%- i %> секунд
+                                                    </option>
+                                                    <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-12">
+                                                <div class="advanced-textarea">
+
+                                                    <div class="text-muted">
+                                                        Сообщение для пользователя:
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <textarea class="form-control textarea" name="modules.blocking.data.share.message"><%- modules.blocking.data.share.message %></textarea>
+
+                                                </div>
+                                                <div class="helper-text-box">
+                                                    <p>
+                                                        Код <code>[timer]</code> отображает обратный отсчет.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </article>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.blocking.data.display" value="sub" <% if (modules.blocking.data.display == 'sub') { %> checked="" <% } %> type="radio"><span></span> Подписка по ключу
+                                </label>
+                            </div>
+                            <div class="helper-text-box">
+                                <p>
+                                    Генерируете список ключей через запятую и продаете их через различные торговые площадки, например на <a href="https://digiseller.ru/" target="_blank">digiseller</a>. Пользователь после ввода ключа сможет смотреть все фильмы на сайте без ограничений.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header>
+                                        <i class="fa fa-minus"></i>
+                                        <h3>Параметры</h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="advanced-textarea">
+
+                                                    <div class="text-muted">
+                                                        Сообщение для пользователя:
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <textarea class="form-control textarea" name="modules.blocking.data.sub.message"><%- modules.blocking.data.sub.message %></textarea>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <div class="text-muted">
+                                                        Список ключей через запятую:
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <textarea class="form-control textarea" id="key" name="modules.blocking.data.sub.keys"><%- modules.blocking.data.sub.keys %></textarea>
+
+                                                    <div class="advanced-textarea-footer">
+                                                        <div>
+                                                            <a href="#[keys]" id="plus10" class="btn btn-default">
+                                                                + 10 ключей
+                                                            </a>
+                                                            <script>
+                                                                var plus10 = document.getElementById('plus10');
+                                                                plus10.addEventListener('click', function () {
+                                                                    var keys = [];
+                                                                    for (var i = 1; i <= 10; i++) {
+                                                                        keys.push('CP' + (Math.random() + '').split('.')[1]);
+                                                                    }
+                                                                    var key = document.getElementById('key');
+                                                                    key.value += ',' + keys.join(',');
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.blocking.data.display" value="adv" <% if (modules.blocking.data.display == 'adv') { %> checked="" <% } %> type="radio"><span></span> Вставить рекламу в плеер
+                                </label>
+                            </div>
+                            <div class="helper-text-box">
+                                <p>
+                                    Рекламный блок будет стоять в плеере определенное число секунд перед началом просмотра. Если пользователь кликнул по рекламе, то блок закроется через 10 сек.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header>
+                                        <i class="fa fa-minus"></i>
+                                        <h3>Параметры</h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                Таймер блокировки:
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.blocking.data.adv.time" class="form-control">
+                                                    <% for (var i = 10; i <= 600; i = i+10) { %>
+                                                    <% if (modules.blocking.data.adv.time == i) { %>
+                                                    <option value="<%- i %>" selected="selected">
+                                                        <%- i %> секунд
+                                                    </option>
+                                                    <% } else { %>
+                                                    <option value="<%- i %>">
+                                                        <%- i %> секунд
+                                                    </option>
+                                                    <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-12">
+                                                <div class="advanced-textarea">
+
+                                                    <div class="text-muted">
+                                                        Сообщение для пользователя:
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <textarea class="form-control textarea" name="modules.blocking.data.adv.message"><%- modules.blocking.data.adv.message %></textarea>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <div class="text-muted">
+                                                        Рекламный код:
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <textarea class="form-control textarea" name="modules.blocking.data.adv.code"><%- modules.blocking.data.adv.code %></textarea>
+
+                                                </div>
+                                                <div class="helper-text-box">
+                                                    <p>
+                                                        Код <code>[timer]</code> отображает обратный отсчет.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </article>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="spacer-20"></div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.blocking.data.display" value="adblock" <% if (modules.blocking.data.display == 'adblock') { %> checked="" <% } %> type="radio"><span></span> Пользователи с AdBlock
+                                </label>
+                            </div>
+                            <div class="helper-text-box">
+                                <p>
+                                    Ограничить начало просмотра таймером у пользователей, которые пользуются AdBlock или другими блокировщиками рекламы.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+
+                            <div class="faq">
+                                <article class="faq-group">
+                                    <header>
+                                        <i class="fa fa-minus"></i>
+                                        <h3>Параметры</h3>
+                                    </header>
+                                    <div class="faq-content clearfix">
+
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                Таймер блокировки:
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="modules.blocking.data.adblock.time" class="form-control">
+                                                    <% for (var i = 10; i <= 600; i = i+10) { %>
+                                                    <% if (modules.blocking.data.adblock.time == i) { %>
+                                                    <option value="<%- i %>" selected="selected">
+                                                        <%- i %> секунд
+                                                    </option>
+                                                    <% } else { %>
+                                                    <option value="<%- i %>">
+                                                        <%- i %> секунд
+                                                    </option>
+                                                    <% } %>
+                                                    <% } %>
+                                                </select>
+                                            </div>
+                                            <div class="spacer-10"></div>
+                                            <div class="col-sm-12">
+                                                <div class="advanced-textarea">
+
+                                                    <div class="text-muted">
+                                                        Сообщение для пользователя:
+                                                    </div>
+
+                                                    <div class="spacer-10"></div>
+
+                                                    <textarea class="form-control textarea" name="modules.blocking.data.adblock.message"><%- modules.blocking.data.adblock.message %></textarea>
+
+                                                </div>
+                                                <div class="helper-text-box">
+                                                    <p>
+                                                        Код <code>[timer]</code> отображает обратный отсчет.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </article>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <% } else { %>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="attention-box attention-danger">
+                                <h4>Модуль «Блокировка» отключен</h4>
+                                <div class="spacer-20"></div>
+                                <p class="text-muted">
+                                    Модуль «Блокировка» позволяет ораничить просмотр фильмов или скачивания торрентов у пользователей до совершения определенного действия. 1. Поделиться фильмов в соц. сети; 2. Просмотр рекламы несколько секунд; 3. Отключение AdBlock на сайте; 4. Платная подписка.
+                                    <br>
+                                    Чтобы включить модуль, нажмите на кнопку «Активировать» вверху экрана.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+            </div>
+
+            <% include ../includes/footer.ejs %>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

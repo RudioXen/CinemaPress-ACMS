@@ -137,6 +137,12 @@ router.get('/:type?', function(req, res) {
         case 'viewed':
             res.render('admin/modules/viewed', render);
             break;
+        case 'player':
+            res.render('admin/modules/player', render);
+            break;
+        case 'blocking':
+            res.render('admin/modules/blocking', render);
+            break;
         default:
             getCountMovies(function (err, render) {
                 return (err)
@@ -471,9 +477,17 @@ router.post('/change', function(req, res) {
             if (originals.hasOwnProperty(key) && changes.hasOwnProperty(key)) {
 
                 if (Array.isArray(originals[key])) {
-                    originals[key] = (changes[key])
+                    var arr = (changes[key])
                         ? changes[key].split(',')
-                        : []
+                        : [];
+                    var clear_arr = [];
+                    arr.forEach(function (text) {
+                        text = text.replace(/(^\s*)|(\s*)$/g, '');
+                        if (text) {
+                            clear_arr.push(text);
+                        }
+                    });
+                    originals[key] = clear_arr;
                 }
                 else if (typeof originals[key] === 'string') {
                     originals[key] = changes[key].toString();

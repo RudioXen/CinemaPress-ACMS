@@ -45,7 +45,11 @@ var collection = require('./paths/collection');
  * @param {Object} [render]
  */
 
+global.CP_sub = '';
+
 router.get('/:level1?/:level2?/:level3?/:level4?', function (req, res, next) {
+
+    global.CP_sub = req.cookies.CP_sub;
 
     var url = parseUrl();
     var urlHash = md5(url.toLowerCase());
@@ -325,7 +329,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function (req, res, next) {
     function clearString(string) {
 
         return (string) ? string.replace(/[^\w\sа-яё\._-]/gi, '') : null;
-        
+
     }
 
     /**
@@ -339,7 +343,7 @@ router.get('/:level1?/:level2?/:level3?/:level4?', function (req, res, next) {
 
         if (err) {
             console.log('[routes/website.js] Error:', err);
-            
+
             return next({
                 "status": 404,
                 "message": err

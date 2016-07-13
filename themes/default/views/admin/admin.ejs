@@ -137,6 +137,16 @@
                                 <p>Просмотр</p>
                                 <span class="corner-label <% if (modules.viewed.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
                             </a>
+                            <a href="/<%- config.urls.admin %>/player" class="btn-square-icontext">
+                                <i class="fa fa-desktop"></i>
+                                <p>Плеер</p>
+                                <span class="corner-label <% if (modules.player.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
+                            <a href="/<%- config.urls.admin %>/blocking" class="btn-square-icontext">
+                                <i class="fa fa-lock"></i>
+                                <p>Блокировка</p>
+                                <span class="corner-label <% if (modules.blocking.status) { %> green <%  } else { %> red <% } %>"><i class="fa fa-power-off"></i></span>
+                            </a>
                         </div>
                     </div>
 
