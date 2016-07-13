@@ -137,7 +137,7 @@ module.exports = {
     "blocking": {
         "status": false,
         "data": {
-            "display": "adblock",
+            "display": "share",
             "share": {
                 "time": 60,
                 "message": "Поделитесь фильмом в одну из социальных сетей чтобы начать просмотр или подождите [timer] секунд и данное сообщение исчезнет."
