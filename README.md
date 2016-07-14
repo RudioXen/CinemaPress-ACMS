@@ -108,7 +108,7 @@
 
  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/movies.png)
 
-Написание уникальных описаний к фильмам. Возможность создать <title> страницы фильма с такими ключами, которые будете использовать в описании. Предусмотрена массовая вставка описаний (до 1000 шт. за один раз), которые написаны в соответствии с определенным шаблоном - (ID) {Описание} (ID) {Описание} (ID) {Описание} ...
+Написание уникальных описаний к фильмам. Возможность создать ``<title>`` страницы фильма с такими ключами, которые будете использовать в описании. Предусмотрена массовая вставка описаний (до 1000 шт. за один раз), которые написаны в соответствии с определенным шаблоном - (ID) {Описание} (ID) {Описание} (ID) {Описание} ...
 
  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/titles.png)  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/descriptions.png)  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/keywords.png)
 
