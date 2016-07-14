@@ -87,3 +87,105 @@
 - [Шаблон «Sansa» для CinemaPress ACMS (kinovmeste.net)](https://github.com/CinemaPress/Theme-Sansa)
 
 <a href="https://github.com/CinemaPress/Theme-Sansa"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png" width="400"></a>
+
+# Параметры CinemaPress ACMS
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/publish.png)
+
+Настройка автоматической публикации фильмов. Выбираете число фильмов, которые будут публиковаться на сайте каждый час. Также можно выбрать обязательную информацию у публикуемых фильмов, к примеру чтобы публиковались только фильмы, у которых есть постер, есть русскоязычное название и т.п.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/index.png)
+
+Настройка названия, описания, ключевых слов и списка фильмов, которые будут отображаться на главной странице. Можно создать совершенно уникальную главную страницу, к примеру вывести 5-ть фильмов из категории «комедия», затем 10 фильмов «2016» года, затем последние 5 фильмов из автоматическо-создаваемой коллекции «Выбор редакции», которая содержит только фильмы, у которых написаны уникальные описания и наконец вывести 5 фильмов которые захотите Вы, указав ID фильмов через запятую.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/urls.png)
+
+Настройка URL всех страниц сайта. Указываете как будет выглядеть URL категорий, фильмов, коллекций, админ-панели и т.д. Например указать чтобы страница со списком фильмов 2016 года имела URL: mysite.com/year/2016, mysite.com/god/2016 и т.п.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/display.png)
+
+Настройка числа фильмов в каждой категории и сортировка по умолчанию, настройка порога вхождения по числу голосов у фильмов при сортировке по рейтингам, название сортировок.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/movies.png)
+
+Написание уникальных описаний к фильмам. Возможность создать <title> страницы фильма с такими ключами, которые будете использовать в описании. Предусмотрена массовая вставка описаний (до 1000 шт. за один раз), которые написаны в соответствии с определенным шаблоном - (ID) {Описание} (ID) {Описание} (ID) {Описание} ...
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/titles.png)  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/descriptions.png)  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/keywords.png)
+
+Написание названий, описаний и ключевых слов для категорий (жанр, жанры, год, годы и т.д.) и страниц фильма (онлайн, скачать и т.д.);
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/codes.png)
+
+Вставка пользовательского кода в страницы сайта и написание условий для robots.txt. Например для подтверждение владением сайта, рекламные коды, коды статистики и т.д.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/load.png)
+
+Настройка адреса сервера Sphinx, Memcached и статических файлов. К примеру после достижения сайта успехов в посещаемости, кэширующий сервер можно вынести на отдельный сервер и указать адрес этого сервера в параметре Memcached.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/cache.png)
+
+Настройка времени кэширования страниц сайта для того, чтобы снизить нагрузку на сайт. Также Вы можете собственноручно при внесении определенных изменений в параметрах или шаблоне, очищать кэш, чтобы эти изменения были видны на сайте.
+
+# Модули CinemaPress ACMS
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/soon.png)
+
+Модуль блока, в котором будут фильмы, премьеры которых скоро состоятся в кинотеатрах. Данный параметр рекомендуется к активации после нескольких месяцев работы сайта, чтобы диапазон был в районе ID 900 000.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/comments.png)
+
+Модуль добавления на страницу фильма блока с отправкой комментариев. Это могут быть как виджеты от ВК, Facebook, так и сервис комментариев Disqus. Можно активировать все сразу, чтобы у пользователя был выбор, в каком сервисе оставить комментарий.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/related.png)
+
+Модуль связанных фильмов - это блок или блоки с фильмами на странице фильма, которые отображаются ниже плеера. Это фильмы из такого же года/жанра/страны/режиссера/актера что и оригинальный фильм. 
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/collections.png)
+
+Модуль коллекций с фильмами для создания уникальных списков фильмов, которые будут интересны зрителю. Есть коллекция, которая формируется автоматически на основе фильмов, для которых написаны уникальные описания, она называется «Выбор редакции».
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/slider.png)
+
+Модуль слайдера с фильмами, позволяет добавить на сайте блок со слайдером (каруселью). Фильмы в слайдере должны быть максимально интересны зрителю, так как именно этот блок будет бросаться в глаза в первую очередь всем посетителям.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/abuse.png)
+
+Модуль скрытия фильмов, на которые поступили жалобы от правообладателя или просто для которых следует скрыть возможность смотреть онлайн или скачивать.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/top.png)
+
+Модуль блока с фильмами который отображается в каждой категории и содержит ТОП нескольких фильмов этой категории.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/socseti.png)
+
+Модуль оповещения поисковых систем и пользователей сайта о том, что у сайта теперь есть паблик/страница с соц. сетях.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/schema.png)
+
+Модуль микроразметки сайта позволяет включить на сайте разметку по стандарту schema.org
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/continue.png)
+
+Модуль позволяет пользователю сразу перейти на страницу фильма, на которой он не досмотрел его до конца.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/viewed.png)
+
+Модуль отображает внизу страницы список последних фильмов, которые посещал пользователь за месяц.
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/player.png)
+
+Модуль настройки кнопок голосования в плеере «нравится»/«не нравится».
+
+ ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/blocking.png)
+
+Модуль блокировки плеера и возможности скачивания до момента, пока пользователь не совершит какое-либо действие:
+- Поделится страницей в соц. сети;
+- Купит ключ для активации платной подписки;
+- Просмотрит рекламу в плеере несколько секунд;
+- Ограничения для пользователей использующие AdBlock.
+
+# Использование CinemaPress ACMS
+
+CinemaPress ACMS распространяется под ![MIT лицензией](https://github.com/CinemaPress/CinemaPress-ACMS/blob/master/LICENSE.txt).
+
+Copyright (c) 2016 CinemaPress ACMS
