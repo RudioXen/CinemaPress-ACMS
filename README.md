@@ -100,7 +100,7 @@
 
  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/urls.png)
 
-Настройка URL всех страниц сайта. Указываете как будет выглядеть URL категорий, фильмов, коллекций, админ-панели и т.д. Например указать чтобы страница со списком фильмов 2016 года имела URL: mysite.com/year/2016, mysite.com/god/2016 и т.п.
+Настройка URL всех страниц сайта. Указываете как будет выглядеть URL категорий, фильмов, коллекций, админ-панели и т.д. Например указать чтобы страница со списком фильмов 2016 года имела URL: ``mysite.com/year/2016``, ``mysite.com/god/2016``, можете сделать URL как у КиноПоиск ``mysite.ru/film/298`` и т.п.
 
  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/display.png)
 
