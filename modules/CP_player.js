@@ -93,8 +93,8 @@ function codePlayer(type, movie) {
 
     function hdgoPlayer() {
 
-        code.player = '<div id="hdgoplayer"></div>';
-        code.footer = '<script type="text/javascript" src="http://hdgo.cc/content/base/video_api.php?token=' + modules.player.data.hdgo.token + '&k=' + movie.kp_id + '"></script>';
+        code.player = '<div id="hdgoplayer" style="width: 100%; height: 100%"></div>';
+        code.footer = '<script type="text/javascript" src="http://hdgo.cc/content/base/video_api.php?token=' + modules.player.data.hdgo.token.trim() + '&k=' + movie.kp_id + '"></script>';
 
     }
 
