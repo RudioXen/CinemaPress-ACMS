@@ -71,7 +71,13 @@ function codePlayer(type, movie) {
         }
         else {
 
-            yohohoPlayer();
+            if (modules.player.data.display == 'hdgo') {
+                hdgoPlayer();
+            }
+            else {
+                yohohoPlayer();
+            }
+
             code = CP_blocking.code(code);
 
         }
@@ -82,6 +88,13 @@ function codePlayer(type, movie) {
 
         code.player = '<div id="' + id + '" data-title="' + title + '" data-up="' + modules.player.data.yohoho.up + '" data-down="' + modules.player.data.yohoho.down + '"></div>';
         code.footer = '<script src="https://yohoho.xyz/yo.js"></script>';
+
+    }
+
+    function hdgoPlayer() {
+
+        code.player = '<div id="hdgoplayer"></div>';
+        code.footer = '<script type="text/javascript" src="http://hdgo.cc/content/base/video_api.php?token=' + modules.player.data.hdgo.token + '&k=' + movie.kp_id + '"></script>';
 
     }
 

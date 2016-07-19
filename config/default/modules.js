@@ -131,6 +131,9 @@ module.exports = {
             "yohoho": {
                 "up": "нравится",
                 "down": "не нравится"
+            },
+            "hdgo": {
+                "token": ""
             }
         }
     },

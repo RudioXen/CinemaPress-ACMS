@@ -110,6 +110,33 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Hdgo:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.player.data.display" value="hdgo" <% if (modules.player.data.display == 'hdgo') { %> checked="" <% } %> type="radio"><span></span> Использовать сервис Hdgo.cc
+                                </label>
+                            </div>
+                            <div class="spacer-10"></div>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <label>Токен:</label>
+                                </div>
+                                <div class="col-xs-9">
+                                    <input name="modules.player.data.hdgo.token" value="<%- modules.player.data.hdgo.token %>" class="form-control" type="text">
+                                    <div class="helper-text-box">
+                                        <p>
+                                            API токен-ключ, который Вы получите после регистрации (пишите на email, указанный на главной странице <a href="http://hdgo.cc/" target="_blank">Hdgo.cc</a>) в <a href="http://hdgo.cc/content/base/api_index.php" target="_blank">панели управления Hdgo</a>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <% } else { %>
 
                     <div class="row">
