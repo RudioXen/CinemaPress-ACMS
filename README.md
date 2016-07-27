@@ -80,11 +80,11 @@
 ~# wget cinemapress.org/i -qO i && chmod +x i && ./i 3
 ```
 
-- [Шаблон «Hodor» для CinemaPress ACMS (kinokong.net)](https://github.com/CinemaPress/Theme-Hodor)
+- [Шаблон «Hodor» для CinemaPress ACMS](https://github.com/CinemaPress/Theme-Hodor)
 
 <a href="https://github.com/CinemaPress/Theme-Hodor"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Hodor/master/screenshot.png" width="400"></a>
 
-- [Шаблон «Sansa» для CinemaPress ACMS (kinovmeste.net)](https://github.com/CinemaPress/Theme-Sansa)
+- [Шаблон «Sansa» для CinemaPress ACMS](https://github.com/CinemaPress/Theme-Sansa)
 
 <a href="https://github.com/CinemaPress/Theme-Sansa"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png" width="400"></a>
 
