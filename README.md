@@ -88,6 +88,14 @@
 
 <a href="https://github.com/CinemaPress/Theme-Sansa"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Sansa/master/screenshot.png" width="400"></a>
 
+- [Шаблон «Robb» для CinemaPress ACMS](https://github.com/CinemaPress/Theme-Robb)
+
+<a href="https://github.com/CinemaPress/Theme-Robb"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Robb/master/screenshot.png" width="400"></a>
+
+- [Шаблон «Ramsay» для CinemaPress ACMS](https://github.com/CinemaPress/Theme-Ramsay)
+
+<a href="https://github.com/CinemaPress/Theme-Ramsay"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png" width="400"></a>
+
 # Параметры CinemaPress ACMS
 
  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/publish.png)
