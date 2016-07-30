@@ -96,6 +96,10 @@
 
 <a href="https://github.com/CinemaPress/Theme-Ramsay"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Ramsay/master/screenshot.png" width="400"></a>
 
+- [Шаблон «Tyrion» для CinemaPress ACMS](https://github.com/CinemaPress/Theme-Tyrion)
+
+<a href="https://github.com/CinemaPress/Theme-Tyrion"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png" width="400"></a>
+
 # Параметры CinemaPress ACMS
 
  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/publish.png)
