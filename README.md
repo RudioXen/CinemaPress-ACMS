@@ -100,6 +100,10 @@
 
 <a href="https://github.com/CinemaPress/Theme-Tyrion"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Tyrion/master/screenshot.png" width="400"></a>
 
+- [Шаблон «Cersei» для CinemaPress ACMS](https://github.com/CinemaPress/Theme-Cersei)
+
+<a href="https://github.com/CinemaPress/Theme-Cersei"><img src="https://raw.githubusercontent.com/CinemaPress/Theme-Cersei/master/screenshot.png" width="400"></a>
+
 # Параметры CinemaPress ACMS
 
  ![Image CinemaPress ACMS](https://raw.githubusercontent.com/CinemaPress/CinemaPress.github.io/master/images/cinemapress-acms/forums/icons/publish.png)
