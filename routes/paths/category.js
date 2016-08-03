@@ -289,6 +289,7 @@ function oneCategory(type, key, page, sorting, callback) {
                 "count": function (callback) {
                     return CP_get.count(
                         query,
+                        sorting,
                         function (err, num) {
                             if (err) return callback(err);
 
