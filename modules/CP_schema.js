@@ -92,7 +92,19 @@ function fullMovieSchema(movie, movies) {
     result.push(onlyMovieSchema(movie));
     result.push(schemaBreadcrumbList);
 
-    return '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
+    var schema = '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
+
+    var opengraph = '';
+    opengraph += '<meta property="og:title" content="' + movie.title + '" />';
+    opengraph += '<meta property="og:description" content="' + movie.title + ' смотреть онлайн, скачать, трейлер, кадры." />';
+    opengraph += '<meta property="og:type" content="video.movie" />';
+    opengraph += '<meta property="og:url" content="' + movie.url + '" />';
+    opengraph += '<meta property="og:image" content="' + movie.picture + '" />';
+    opengraph += (movie.poster.indexOf('http')+1)
+        ? '<meta property="og:image" content="' + movie.poster + '" />'
+        : '<meta property="og:image" content="' + config.protocol + config.domain + movie.poster + '" />';
+
+    return schema + opengraph;
 
 }
 
@@ -219,7 +231,16 @@ function categorySchema(page, movies) {
     result.push(schemaItemList);
     result.push(schemaBreadcrumbList);
 
-    return '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
+    var schema = '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
+
+    var opengraph = '';
+    opengraph += '<meta property="og:title" content="' + page.title + '" />';
+    opengraph += '<meta property="og:description" content="' + page.description + '" />';
+    opengraph += '<meta property="og:type" content="video.movie" />';
+    opengraph += '<meta property="og:url" content="' + page.url + '" />';
+    opengraph += '<meta property="og:image" content="' + config.protocol + config.domain + '/themes/default/public/images/og.png" />';
+
+    return schema + opengraph;
 
 }
 
@@ -259,7 +280,16 @@ function generalSchema(page) {
         }
     }
 
-    return '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
+    var schema = '<script type="application/ld+json">' + JSON.stringify(result) + '</script>';
+
+    var opengraph = '';
+    opengraph += '<meta property="og:title" content="' + page.title + '" />';
+    opengraph += '<meta property="og:description" content="' + page.description + '" />';
+    opengraph += '<meta property="og:type" content="video.movie" />';
+    opengraph += '<meta property="og:url" content="' + config.protocol + config.domain + '" />';
+    opengraph += '<meta property="og:image" content="' + config.protocol + config.domain + '/themes/default/public/images/og.png" />';
+
+    return schema + opengraph;
 
 }
 
