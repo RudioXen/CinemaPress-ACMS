@@ -283,7 +283,21 @@ function typeMovie(type) {
     var regexpType = new RegExp('^(movie' + types + ')$', 'ig');
     var execType   = regexpType.exec(type);
 
-    return (execType) ? execType[1] : '404';
+    if (execType) {
+        for (var e in config.urls.movies) {
+            if (config.urls.movies.hasOwnProperty(e)) {
+                if (config.urls.movies[e] == execType[1]) {
+                    type = e;
+                    break;
+                }
+            }
+        }
+    }
+    else {
+        type = '404';
+    }
+
+    return type;
 
 }
 
