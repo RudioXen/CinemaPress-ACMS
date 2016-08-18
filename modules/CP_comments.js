@@ -24,7 +24,7 @@ function headComments() {
     var data = '<script type="text/javascript">function showComments(){var t=this.dataset&&this.dataset.id?this.dataset.id:"' + start + '",e=document.querySelector("#"+t);if(e){var n=document.querySelectorAll(".comment");if(n&&n.length)for(var o=0;o<n.length;o++)n[o].style.display="none";e.style.display="block"}}window.addEventListener("load",function(){var t=document.querySelectorAll(".button");if(t&&t.length)for(var e=0;e<t.length;e++)t[e].addEventListener("click",showComments);showComments()});</script>';
 
     if (modules.comments.data.vk.app_id) {
-        data += '<script type="text/javascript" src="//vk.com/js/api/openapi.js?122"></script><script type="text/javascript">if (typeof VK == "object") {VK.init({apiId: ' + modules.comments.data.vk.app_id + ', onlyWidgets: true});}</script>';
+        data += '<script type="text/javascript" src="//vk.com/js/api/openapi.js?127"></script><script type="text/javascript">if (typeof VK == "object") {VK.init({apiId: ' + modules.comments.data.vk.app_id + ', onlyWidgets: true});}</script>';
     }
 
     if (modules.comments.data.facebook.admins) {
@@ -56,11 +56,11 @@ function codesComments(movie) {
     }
 
     if (modules.comments.data.vk.app_id) {
-        data.vk = '<div id="vk_comments"></div><script type="text/javascript">if (typeof VK == "object") {VK.Widgets.Comments("vk_comments", {limit: 10, width: "665", attach: "*"});}</script>';
+        data.vk = '<div id="vk_comments"></div><script type="text/javascript">if (typeof VK == "object") {VK.Widgets.Comments("vk_comments", {limit: 10, width: "auto", attach: "*"});}</script><style>#vk_comments,#vk_comments iframe {width: 100% !important;}</style>';
     }
 
     if (modules.comments.data.facebook.admins) {
-        data.facebook = '<div class="fb-comments" data-href="' + movie.url + '" data-numposts="10" data-width="665"></div><div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script>';
+        data.facebook = '<div class="fb-comments" data-href="' + movie.url + '" data-numposts="10" data-width="auto"></div><div id="fb-root"></div><script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6"; fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script><style>.fb-comments,.fb-comments span,.fb-comments iframe {width: 100% !important;}</style>';
     }
 
     var buttons = '';
