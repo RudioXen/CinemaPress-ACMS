@@ -106,6 +106,24 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="col-xs-3">
+                                    <label>Один плеер:</label>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="inline-labels">
+                                        <label>
+                                            <input name="modules.player.data.yohoho.single" value="1" <% if (modules.player.data.yohoho.single) { %> checked="" <% } %> type="radio"><span></span> Да
+                                        </label>
+                                        <label>
+                                            <input name="modules.player.data.yohoho.single" value="0" <% if (!modules.player.data.yohoho.single) { %> checked="" <% } %> type="radio"><span></span> Нет
+                                        </label>
+                                    </div>
+                                    <div class="helper-text-box">
+                                        <p>
+                                            Отображать только один плеер, максимально релевантный результату.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

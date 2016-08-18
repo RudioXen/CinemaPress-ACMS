@@ -86,7 +86,7 @@ function codePlayer(type, movie) {
 
     function yohohoPlayer() {
 
-        code.player = '<div id="' + id + '" data-title="' + title + '" data-up="' + modules.player.data.yohoho.up + '" data-down="' + modules.player.data.yohoho.down + '"></div>';
+        code.player = '<div id="' + id + '" data-title="' + title + '" data-up="' + modules.player.data.yohoho.up + '" data-down="' + modules.player.data.yohoho.down + '" data-single="' + modules.player.data.yohoho.single + '"></div>';
         code.footer = '<script src="https://yohoho.xyz/yo.js"></script>';
 
     }

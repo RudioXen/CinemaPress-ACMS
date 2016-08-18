@@ -130,7 +130,8 @@ module.exports = {
             "display": "yohoho",
             "yohoho": {
                 "up": "нравится",
-                "down": "не нравится"
+                "down": "не нравится",
+                "single": 0
             },
             "hdgo": {
                 "token": ""
