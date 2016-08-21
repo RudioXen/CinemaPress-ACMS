@@ -15,11 +15,23 @@ var modules = require('../config/modules');
 
 function headComments() {
 
-    var start = (modules.comments.data.disqus.shortname)
-        ? 'dsqs_comment'
-        : (modules.comments.data.vk.app_id)
-            ? 'veka_comment'
-            : 'fcbk_comment';
+    var start = 'none_comments';
+
+    if (modules.comments.data.cackle.id) {
+        start = 'cack_comment';
+    }
+    else if (modules.comments.data.hypercomments.widget_id) {
+        start = 'hycm_comment';
+    }
+    else if (modules.comments.data.disqus.shortname) {
+        start = 'dsqs_comment';
+    }
+    else if (modules.comments.data.vk.app_id) {
+        start = 'veka_comment';
+    }
+    else if (modules.comments.data.facebook.admins) {
+        start = 'fcbk_comment';
+    }
 
     var data = '<script type="text/javascript">function showComments(){var t=this.dataset&&this.dataset.id?this.dataset.id:"' + start + '",e=document.querySelector("#"+t);if(e){var n=document.querySelectorAll(".comment");if(n&&n.length)for(var o=0;o<n.length;o++)n[o].style.display="none";e.style.display="block"}}window.addEventListener("load",function(){var t=document.querySelectorAll(".button");if(t&&t.length)for(var e=0;e<t.length;e++)t[e].addEventListener("click",showComments);showComments()});</script>';
 
