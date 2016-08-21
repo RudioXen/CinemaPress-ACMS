@@ -6,10 +6,10 @@
             <p>©&nbsp;<a href="https://CinemaPress.org/" target="_blank">CP</a></p>
         </div>
         <div class="pull-right">
-            <a href="#[save]" class="btn btn-info" id="save">
+            <a href="javascript:void(0)" class="btn btn-info" id="save">
                 <span class="fa fa-floppy-o"></span>&nbsp;Сохранить&nbsp;изменения
             </a>
-            <a href="#" class="btn" id="toggle-footer"> <i class="fa fa-chevron-down"></i> </a>
+            <a href="javascript:void(0)" class="btn" id="toggle-footer"> <i class="fa fa-chevron-down"></i> </a>
         </div>
     </div>
 </footer>
@@ -187,7 +187,8 @@
                         configs[i].name == 'modules.social.data.twitter' ||
                         configs[i].name == 'modules.social.data.facebook' ||
                         configs[i].name == 'modules.social.data.vk' ||
-                        configs[i].name == 'modules.player.data.hdgo.token'
+                        configs[i].name == 'modules.player.data.hdgo.token' ||
+                        configs[i].name == 'modules.player.data.moonwalk.token'
                 ) { console.log('Empty modules.'); }
                 else {
                     continue;

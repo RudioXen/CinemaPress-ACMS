@@ -20,6 +20,7 @@ var app          = express();
  * Route dependencies.
  */
 
+var player  = require('./routes/player');
 var robots  = require('./routes/robots');
 var admin   = require('./routes/admin');
 var website = require('./routes/website');
@@ -48,6 +49,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use('/iframe.player', player);
 app.use('/robots.txt', robots);
 app.use('/' + config.urls.admin, admin);
 app.use(website);

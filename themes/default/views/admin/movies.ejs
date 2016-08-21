@@ -36,7 +36,7 @@
             <div class="window">
                 <div class="actionbar">
                     <div class="pull-left">
-                        <a href="#" class="btn" data-toggle-sidebar="left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
                             <i class="fa fa-chevron-left"></i>
                         </a>
                         <a href="/<%- config.urls.admin %>/movies" class="btn">
@@ -44,7 +44,7 @@
                         </a>
                     </div>
                     <div class="pull-right">
-                        <a href="#" class="btn" data-toggle-sidebar="right">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
                         </a>
                     </div>
@@ -139,44 +139,44 @@
                                     <div class="pull-left">
                                         <div class="text text-muted" style="float: none;"><span id="movie.description">0</span> символа(-ов)</div>
                                         <% if (movie.title_ru) { %>
-                                        <a href="#[title_ru]" data-name="movie.description" data-code="<%- movie.title_ru %>" class="btn btn-default codes">
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- movie.title_ru %>" class="btn btn-default codes">
                                             <%- movie.title_ru %>
                                         </a>
                                         <% } %>
                                         <% if (movie.title_en) { %>
-                                        <a href="#[title_en]" data-name="movie.description" data-code="<%- movie.title_en %>" class="btn btn-default codes">
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- movie.title_en %>" class="btn btn-default codes">
                                             <%- movie.title_en %>
                                         </a>
                                         <% } %>
                                         <% if (movie.year) { %>
-                                        <a href="#[year]" data-name="movie.description" data-code="<%- movie.year %>" class="btn btn-default codes">
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- movie.year %>" class="btn btn-default codes">
                                             <%- movie.year %>
                                         </a>
                                         <% } %>
                                         <% if (movie.countries_arr && movie.countries_arr.length) { %>
                                         <% movie.countries_arr.forEach(function (value) { %>
-                                        <a href="#[countries]" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
                                             <%- value %>
                                         </a>
                                         <% }); %>
                                         <% } %>
                                         <% if (movie.genres_arr && movie.genres_arr.length) { %>
                                         <% movie.genres_arr.forEach(function (value) { %>
-                                        <a href="#[genres]" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
                                             <%- value %>
                                         </a>
                                         <% }); %>
                                         <% } %>
                                         <% if (movie.actors_arr && movie.actors_arr.length) { %>
                                         <% movie.actors_arr.forEach(function (value) { %>
-                                        <a href="#[actors]" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
                                             <%- value %>
                                         </a>
                                         <% }); %>
                                         <% } %>
                                         <% if (movie.directors_arr && movie.directors_arr.length) { %>
                                         <% movie.directors_arr.forEach(function (value) { %>
-                                        <a href="#[directors]" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
+                                        <a href="javascript:void(0)" data-name="movie.description" data-code="<%- value %>" class="btn btn-default codes">
                                             <%- value %>
                                         </a>
                                         <% }); %>
@@ -268,7 +268,7 @@
                         <% for (var movie in texts.movies) { if (texts.movies.hasOwnProperty(movie)) { %>
                         <tr>
                             <td class="td-highlight">
-                                <a href="#[del]" data-kp_id="<%- movie %>" class="btn-less del" style="margin: 4px;"><i class="fa fa-times"></i></a>
+                                <a href="javascript:void(0)" data-kp_id="<%- movie %>" class="btn-less del" style="margin: 4px;"><i class="fa fa-times"></i></a>
                             </td>
                             <td>
                                 <%- movie %>

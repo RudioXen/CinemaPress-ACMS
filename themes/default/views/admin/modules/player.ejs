@@ -79,33 +79,11 @@
                         <div class="col-sm-9">
                             <div class="inline-labels">
                                 <label>
-                                    <input name="modules.player.data.display" value="yohoho" <% if (modules.player.data.display == 'yohoho') { %> checked="" <% } %> type="radio"><span></span> Использовать сервис Yohoho.xyz
+                                    <input name="modules.player.data.display" value="yohoho" <% if (modules.player.data.display == 'yohoho') { %> checked="" <% } %> type="radio"><span></span> Yohoho.xyz основной плеер
                                 </label>
                             </div>
                             <div class="spacer-10"></div>
                             <div class="row">
-                                <div class="col-xs-3">
-                                    <label>Нравится:</label>
-                                </div>
-                                <div class="col-xs-9">
-                                    <input name="modules.player.data.yohoho.up" value="<%- modules.player.data.yohoho.up %>" class="form-control" type="text">
-                                    <div class="helper-text-box">
-                                        <p>
-                                            Надпись на кнопке «Нравится» в плеерах и торрентах.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <label>Не нравится:</label>
-                                </div>
-                                <div class="col-xs-9">
-                                    <input name="modules.player.data.yohoho.down" value="<%- modules.player.data.yohoho.down %>" class="form-control" type="text">
-                                    <div class="helper-text-box">
-                                        <p>
-                                            Надпись на кнопке «Не нравится» в плеерах и торрентах.
-                                        </p>
-                                    </div>
-                                </div>
                                 <div class="col-xs-3">
                                     <label>Один плеер:</label>
                                 </div>
@@ -135,7 +113,7 @@
                         <div class="col-sm-9">
                             <div class="inline-labels">
                                 <label>
-                                    <input name="modules.player.data.display" value="hdgo" <% if (modules.player.data.display == 'hdgo') { %> checked="" <% } %> type="radio"><span></span> Использовать сервис Hdgo.cc
+                                    <input name="modules.player.data.display" value="hdgo" <% if (modules.player.data.display == 'hdgo') { %> checked="" <% } %> type="radio"><span></span> Hdgo.cc основной плеер
                                 </label>
                             </div>
                             <div class="spacer-10"></div>
@@ -147,7 +125,34 @@
                                     <input name="modules.player.data.hdgo.token" value="<%- modules.player.data.hdgo.token %>" class="form-control" type="text">
                                     <div class="helper-text-box">
                                         <p>
-                                            API токен-ключ, который Вы получите после <a href="http://hdgo.cc/" target="_blank">регистриции</a> (пишите на email, указанный на главной странице) в <a href="http://hdgo.cc/content/base/api_index.php" target="_blank">панели управления</a>. Фильмов будет существенно меньше по сравнению с Yohoho, однако Вы можете недостающие фильмы заказывать через <a href="http://hdgo.cc/content/base/orders.php" target="_blank">стол заказов</a>.
+                                            API токен-ключ, который Вы получите после <a href="http://hdgo.cc/" target="_blank">регистриции</a> (пишите на email, указанный на главной странице и просите отключить рекламу в плеере для молодого сайта) в <a href="http://hdgo.cc/content/base/api_index.php" target="_blank">панели управления</a>. Недостающие фильмы заказывать через <a href="http://hdgo.cc/content/base/orders.php" target="_blank">стол заказов</a>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Moonwalk:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="inline-labels">
+                                <label>
+                                    <input name="modules.player.data.display" value="moonwalk" <% if (modules.player.data.display == 'moonwalk') { %> checked="" <% } %> type="radio"><span></span> Moonwalk.cc основной плеер
+                                </label>
+                            </div>
+                            <div class="spacer-10"></div>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <label>Токен:</label>
+                                </div>
+                                <div class="col-xs-9">
+                                    <input name="modules.player.data.moonwalk.token" value="<%- modules.player.data.moonwalk.token %>" class="form-control" type="text">
+                                    <div class="helper-text-box">
+                                        <p>
+                                            API токен-ключ, который Вы получите после <a href="http://moonwalk.cc/" target="_blank">регистриции</a> (пишите на email, указанный на главной странице и просите отключить рекламу в плеере для молодого сайта) в <a href="http://moonwalk.cc/partners/edit_profile" target="_blank">панели управления</a>. Недостающие фильмы заказывать через <a href="http://moonwalk.cc/partners/orders" target="_blank">стол заказов</a>.
                                         </p>
                                     </div>
                                 </div>

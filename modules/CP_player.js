@@ -60,9 +60,6 @@ function codePlayer(type, movie) {
 
     }
     else {
-        if (type == 'download') {
-            id = 'yohoho-torrent';
-        }
 
         if (modules.abuse.status && modules.abuse.data.movies.indexOf((movie.kp_id + ''))+1) {
 
@@ -71,11 +68,21 @@ function codePlayer(type, movie) {
         }
         else {
 
-            if (modules.player.data.display == 'hdgo') {
-                hdgoPlayer();
+            if (type == 'download') {
+
+                id = 'yohoho-torrent';
+                yohohoPlayer();
+
             }
             else {
-                yohohoPlayer();
+
+                if (modules.player.data.display == 'yohoho') {
+                    yohohoPlayer();
+                }
+                else {
+                    allPlayer();
+                }
+
             }
 
             code = CP_blocking.code(code);
@@ -84,17 +91,25 @@ function codePlayer(type, movie) {
 
     }
 
+    /**
+     * Yohoho player.
+     */
+
     function yohohoPlayer() {
 
-        code.player = '<div id="' + id + '" data-title="' + title + '" data-up="' + modules.player.data.yohoho.up + '" data-down="' + modules.player.data.yohoho.down + '" data-single="' + modules.player.data.yohoho.single + '"></div>';
+        code.player = '<div id="' + id + '" data-title="' + title + '" data-single="' + modules.player.data.yohoho.single + '"></div>';
         code.footer = '<script src="https://yohoho.xyz/yo.js"></script>';
 
     }
 
-    function hdgoPlayer() {
+    /**
+     * All players.
+     */
 
-        code.player = '<div id="hdgoplayer" style="width: 100%; height: 100%"></div>';
-        code.footer = '<script type="text/javascript" src="http://hdgo.cc/content/base/video_api.php?token=' + modules.player.data.hdgo.token.trim() + '&k=' + movie.kp_id + '"></script>';
+    function allPlayer() {
+
+        code.player = '<div id="cinemapress-player" data-title="' + title + '" data-single="' + modules.player.data.yohoho.single + '" style="width: 100%; height: 100%"></div>';
+        code.footer = '<script src="/iframe.player?id=' + movie.kp_id + '"></script>';
 
     }
 

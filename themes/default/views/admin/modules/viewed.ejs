@@ -32,11 +32,11 @@
                     </div>
                     <div class="pull-right">
                         <% if (modules.viewed.status) { %>
-                        <a href="#[false]" data-module="viewed" data-status="false" class="btn btn-danger module-status">
+                        <a href="javascript:void(0)" data-module="viewed" data-status="false" class="btn btn-danger module-status">
                             <i class="fa fa-power-off"></i>&nbsp;Отключить
                         </a>
                         <% } else { %>
-                        <a href="#[true]" data-module="viewed" data-status="true" class="btn btn-success module-status">
+                        <a href="javascript:void(0)" data-module="viewed" data-status="true" class="btn btn-success module-status">
                             <i class="fa fa-power-off"></i>&nbsp;Активировать
                         </a>
                         <% } %>
@@ -47,7 +47,7 @@
             <div class="window">
                 <div class="actionbar">
                     <div class="pull-left">
-                        <a href="#" class="btn" data-toggle-sidebar="left">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="left">
                             <i class="fa fa-chevron-left"></i>
                         </a>
                         <a href="/<%- config.urls.admin %>/viewed" class="btn">
@@ -62,7 +62,7 @@
                             <span class="label label-danger">Отключен</span>
                             <% } %>
                         </p>
-                        <a href="#" class="btn" data-toggle-sidebar="right">
+                        <a href="javascript:void(0)" class="btn" data-toggle-sidebar="right">
                             <i class="fa fa-chevron-right"></i>
                         </a>
                     </div>
