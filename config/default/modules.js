@@ -2,6 +2,12 @@ module.exports = {
     "comments": {
         "status": true,
         "data": {
+            "cackle": {
+                "id": ""
+            },
+            "hypercomments": {
+                "widget_id": ""
+            },
             "disqus": {
                 "shortname": "films-online"
             },

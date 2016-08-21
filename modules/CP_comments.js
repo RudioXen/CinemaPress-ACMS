@@ -51,6 +51,14 @@ function codesComments(movie) {
 
     var data = {};
 
+    if (modules.comments.data.cackle.id) {
+        data.hypercomments = '<div id="mc-container"></div><script>cackle_widget=window.cackle_widget||[],cackle_widget.push({widget:"Comment",id:' + modules.comments.data.cackle.id + '}),function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"==document.location.protocol?"https":"http")+"://cackle.me/widget.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b.nextSibling)}();</script>';
+    }
+
+    if (modules.comments.data.hypercomments.widget_id) {
+        data.hypercomments = '<div id="hypercomments_widget"></div><script>_hcwp=window._hcwp||[],_hcwp.push({widget:"Stream",widget_id:' + modules.comments.data.hypercomments.widget_id + '}),function(){if(!("HC_LOAD_INIT"in window)){HC_LOAD_INIT=!0;var a=(navigator.language||navigator.systemLanguage||navigator.userLanguage||"en").substr(0,2).toLowerCase(),b=document.createElement("script");b.type="text/javascript",b.async=!0,b.src=("https:"==document.location.protocol?"https":"http")+"://w.hypercomments.com/widget/hc/' + modules.comments.data.hypercomments.widget_id + '/"+a+"/widget.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c.nextSibling)}}();</script>';
+    }
+
     if (modules.comments.data.disqus.shortname) {
         data.disqus = '<div id="disqus_thread"></div><script>var disqus_config=function(){this.page.url="' + movie.url + '",this.page.identifier="' + movie.url + '"};!function(){var e=document,t=e.createElement("script");t.src="//' + modules.comments.data.disqus.shortname + '.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)}();</script>';
     }
@@ -66,6 +74,14 @@ function codesComments(movie) {
     var buttons = '';
     var blocks = '';
 
+    if (data.cackle) {
+        buttons += '<a href="javascript:void(0)" class="button cack" data-id="cack_comment" style="background: #4FA3DA; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none; margin-right: 5px;">Комментарии</a>';
+        blocks += '<div class="comment" id="cack_comment" style="display: none;">' + data.cackle + '</div>';
+    }
+    if (data.hypercomments) {
+        buttons += '<a href="javascript:void(0)" class="button hycm" data-id="hycm_comment" style="background: #E4C755; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none; margin-right: 5px;">Комментарии</a>';
+        blocks += '<div class="comment" id="hycm_comment" style="display: none;">' + data.hypercomments + '</div>';
+    }
     if (data.disqus) {
         buttons += '<a href="javascript:void(0)" class="button dsqs" data-id="dsqs_comment" style="background: #2E9FFF; color: #fff; border-radius: 2px; padding: 10px; text-decoration: none; margin-right: 5px;">Комментарии</a>';
         blocks += '<div class="comment" id="dsqs_comment" style="display: none;">' + data.disqus + '</div>';
