@@ -181,7 +181,22 @@ router.get('/?', function(req, res) {
 
                 if (!result.error && result.length) {
 
-                    r = script.replace('iframe-src', result[0].iframe_url);
+                    var iframe_url = '';
+                    var added = 0;
+
+                    for (var i = 0; i < result.length; i++) {
+
+                        var d = result[i].added_at || result[i].last_episode_time || 0;
+                        var publish = (new Date(d).getTime()/1000);
+
+                        if (publish >= added) {
+                            iframe_url = result[i].iframe_url;
+                            added = publish;
+                        }
+
+                    }
+
+                    r = script.replace('iframe-src', iframe_url);
 
                 }
 
