@@ -143,7 +143,7 @@ router.get('/?', function(req, res) {
 
     function getHdgo(id, callback) {
 
-        request('http://hdgo.cc/content/base/video_api.php?token=' + modules.player.data.hdgo.token + '&k=' + id, function (error, response, body) {
+        request('http://hdgo.cc/content/base/video_api.php?token=' + modules.player.data.hdgo.token.trim() + '&k=' + id, function (error, response, body) {
 
             var r = false;
 
@@ -171,7 +171,7 @@ router.get('/?', function(req, res) {
 
     function getMoonwalk(id, callback) {
 
-        request('http://moonwalk.cc/api/videos.json?api_token=' + modules.player.data.moonwalk.token + '&kinopoisk_id=' + id, function (error, response, body) {
+        request('http://moonwalk.cc/api/videos.json?api_token=' + modules.player.data.moonwalk.token.trim() + '&kinopoisk_id=' + id, function (error, response, body) {
 
             var r = false;
 
